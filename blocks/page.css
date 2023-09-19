@@ -1,0 +1,11 @@
+.page {
+    background-color: black;
+    color: white;
+    font-family: Inter, Arial, Arial, Helvetica, sans-serif;
+}
+
+.page__content {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
