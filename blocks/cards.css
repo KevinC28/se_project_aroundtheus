@@ -1,0 +1,23 @@
+.cards {
+    fonts 
+}
+
+.card__list {
+    display: grid;
+}
+
+.card__image {
+    width: 282px;
+    height: 282px;
+}
+
+.card__description {
+    display: flex;
+    background-color: white;
+    color: black;
+    padding: 25px 69px 25px 20px;
+}
+
+.card__like-button {
+    background: transparent url(../images/Vector.svg);
+}
