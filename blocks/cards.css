@@ -15,9 +15,13 @@
     display: flex;
     background-color: white;
     color: black;
-    padding: 25px 69px 25px 20px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 20px;
 }
 
 .card__like-button {
-    background: transparent url(../images/Vector.svg);
+    background: transparent url(../images/like-unactive.svg) center no-repeat;
+    width: 21px;
+    height: 18px;
 }
