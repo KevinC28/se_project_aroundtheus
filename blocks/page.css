@@ -18,8 +18,8 @@
     margin: 0 auto;
 }
 
-@media screen and (mad-width: 1100px) {
-    .page__selection {
+@media screen and (max-width: 1100px) {
+    .page__section {
         margin: 0 20px;
         max-width: calc(100% - 40px);
     }

@@ -6,11 +6,12 @@
 
 .profile__info {
     display: grid;
+    align-items: center;
     grid-template-areas: 
         "title button"
         "description description";
     grid-template-columns: minmax(auto, 373px) auto;
-    /* grid-gap: 18px 17px; */
+    grid-gap: 18px 17px;
 }
 
 .profile__edit-button {
@@ -33,6 +34,10 @@
     font-weight: 500;
     grid-area: title;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 373px;
 }
 
 .profile__description {
@@ -41,6 +46,11 @@
     font-weight: 400;
     grid-area: description;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 373px;
+    
 }
 
 .profile__image {
@@ -54,7 +64,36 @@
 
 @media screen and (max-width:480px) {
     .profile {
-        /* background-color: pink; */
+        flex-direction: column;
+    }
+
+    .profile__info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .profile__title {
+        max-width: 282px;
+    }
+
+    .profile__description {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile__add-button {
+        margin: 0;
+        padding: 0;
+        width: 100%;    
+        max-width: 282px;    
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
         flex-direction: column;
     }
 
@@ -72,7 +111,8 @@
 
     .profile__add-button {
         margin: 0;
-        width: 100%;
         padding: 0;
-    }
+        width: 100%;    
+        max-width: 282px;    
+}
 }
