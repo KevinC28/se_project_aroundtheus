@@ -11,3 +11,13 @@
     line-height: 22px;
     margin: 0;
 }
+
+@media screen and (min-width: 1000px) {
+    .footer__copyright {
+        display: flex;
+        max-width: 282px;
+        width: 100%;
+        justify-self: center;
+        margin: 0;
+    }
+}
