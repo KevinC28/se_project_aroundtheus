@@ -12,12 +12,20 @@
     margin: 0;
 }
 
-@media screen and (min-width: 1000px) {
+    @media screen and (max-width: 320px) {
     .footer__copyright {
         display: flex;
+        font-size: 14px;
         max-width: 282px;
         width: 100%;
         justify-self: center;
         margin: 0;
-    }
 }
+    }
+
+    @media screen and (max-width: 900px) {
+        .footer__copyright {
+            margin: 0;
+            max-width: calc(100% - 40px);
+        }
+    }
