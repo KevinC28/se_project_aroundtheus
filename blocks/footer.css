@@ -1,14 +1,15 @@
 .footer {
     display: flex;
-    background: #545454;
-    padding: 67px;
+    color: #545454;
+    padding: 67px 0;
+    max-width: 880px;
+    margin: 0 auto;
 }
 
 .footer__copyright {
     font-size: 18px;
     font-weight: 400;
     line-height: 22px;
-    margin: 0;
 }
 
     @media screen and (max-width: 320px) {
@@ -25,5 +26,12 @@
         .footer__copyright {
             margin: 0;
             max-width: calc(100% - 40px);
+        }
+    }
+
+    @media screen and  {min-width: 1200;
+        .footer__copyright {
+            margin: 0;
+
         }
     }

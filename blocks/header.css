@@ -2,9 +2,6 @@
     font-family: Inter, Arial, Arial, Helvetica, sans-serif;
     padding: 28px 0 32px 17px;
     box-sizing: border-box;
+    
 }
 
-.header__line {
-    background-color: #545454;
-    opacity: 70%;
-}
