@@ -48,6 +48,10 @@
     border: 1px;
 }
 
+.card__like-button[type="checkbox"] {
+    color: red ;
+}
+
 .card__like-button:hover {
     color: black;
     opacity: 50%;
