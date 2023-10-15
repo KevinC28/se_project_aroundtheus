@@ -62,7 +62,6 @@
     white-space: nowrap;
     overflow: hidden;
     max-width: 373px;
-    
 }
 
 .profile__image {
@@ -74,16 +73,18 @@
     margin-right: 24px;
 }
 
-@media screen and (max-width: 320px) {
-    .profile {
-        padding-top: 36px;
+@media screen and (max-width: 320px){
+    .profile__info {
+        padding: 14px;
     }
+
     .profile__image {
         margin: 0;
+        padding-bottom: 14px ;
     }
+    
     .profile__title {
         font-size: 22px;
-        align-items: center;
         margin: 0;
         padding: 0;
     }
@@ -102,14 +103,14 @@
     }
 
     .profile__description {
-        padding-top: 36px;
+        padding-bottom: ;
     }
 }
 
 @media screen and (max-width:480px) {    
 
     .profile__image {
-        margin: 0;
+        margin-bottom: ;
     }
     
 
