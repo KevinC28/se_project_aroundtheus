@@ -15,17 +15,14 @@
 
 @media screen and  {max-width: 1280px;}
     .footer {
-        display: flex;
         color: #545454;
         padding: 67px 0;
         max-width: 880px;
         margin: 0 auto;
     }
-    
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 879px) {
         .footer {
-            display: flex;
             color: #545454;
             padding: 67px 0;
             max-width: 590px;
@@ -35,11 +32,10 @@
 
     @media screen and (max-width: 580px) {
         .footer {
-                display: flex;
                 color: #545454;
-                padding: 67px 0;
+                padding: 0;
                 max-width: 282px;
-                margin: 0 auto;
+                margin: 48px auto;
             }
     
         .footer__copyright {
