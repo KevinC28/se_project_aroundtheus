@@ -28,4 +28,8 @@
         width: 126px;
         height: 24px;
     }
+
+    .header::after {
+        padding: 0;
+    }
 }
