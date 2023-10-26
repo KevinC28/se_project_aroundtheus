@@ -90,13 +90,13 @@
         margin-left: 18px;
     }
 
-    /* .profile__add-button {
+    .profile__add-button {
         margin-left: 165px;
     }
-} */
+}
 
 @media screen and (max-width: 780px) {
-    /* .profile {
+    .profile {
         flex-direction: column;
     }
 
@@ -115,12 +115,12 @@
     .profile__description {
         width: 100%;
         text-align: center;
-    } */
+    }
 
     .profile__add-button {
         margin: 0;
         padding: 0;
-        /* width: 100%;     */
+        width: 100%;    
         max-width: 282px;    
     }
 }
