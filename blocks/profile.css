@@ -80,7 +80,6 @@
     
     .profile__title {
         margin-left: 10px;
-        overflow: visible;
     }
     .profile__description {
         margin-left: 10px;
@@ -126,8 +125,6 @@
 
 @media screen and (max-width: 320px){
     .profile {
-        align-items: center;
-        overflow-x: hidden;
         padding-top: 35px;
     }
     
@@ -145,7 +142,7 @@
         font-size: 22px;
         margin: 0;
         padding-top: 27px;
-        line-height: 18px;
+        line-height: 22px;
     }
 
     .profile__description {
@@ -156,17 +153,13 @@
     }
 
     .profile__edit-button {
-        background: transparent url(../images/edit-button.svg) center no-repeat;
         height: 18px;
         width: 18px;
         grid-area: button;
-        cursor: pointer;
-        align-items: center;
         padding: 0;
     }
     
     .profile__edit-button:hover {
-        color: #fff;
         opacity: 60%;
     }
 
