@@ -22,7 +22,6 @@
 
     @media screen and (max-width: 879px) {
         .footer {
-            padding: 67px 0;
             max-width: 590px;
             margin: 0 auto;
         }
@@ -44,6 +43,6 @@
 
     @media screen and (max-width: 320px) {
         .footer__copyright {
-            padding-top: 48px;
+            margin-bottom: 36px;
         }
     }
