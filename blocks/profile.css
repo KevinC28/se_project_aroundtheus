@@ -79,7 +79,6 @@
 @media screen and (max-width: 1440px) {
     .profile__title {
         flex-direction: column;
-        text-overflow: clip;
         margin-left: 10px;
     }
 
@@ -110,8 +109,6 @@
         margin: 0;
         padding: 0;
         line-height: 27px;
-        text-align: center;
-        text-overflow: clip;
     }
 
     .profile__description {
@@ -147,40 +144,23 @@
     
     .profile__info {
         max-width: 282px;
-        
     }
 
     .profile__image {
         margin-bottom: 27px;
-        padding: 0;
      
     }
     
-    .profile__title {
-        font-size: 22px;
-        margin: 0;
-        max-width: 196px;
-        padding: 0;
-        line-height: 27px;
-        text-align: center;
-        text-overflow: clip;
-    }
-
     .profile__description {
-        padding: 14px 0 36px 0;
         font-size: 14px;
         font-weight: 400;
         line-height: 17px;
-        word-wrap: break-word;
     }
 
     .profile__edit-button {
         height: 18px;
         max-width: 18px;
-        grid-area: button;
         margin-left: 10px;
-        padding: 0;
-        display: flexbox;
     }
     
     .profile__edit-button:hover {
