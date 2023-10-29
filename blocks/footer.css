@@ -3,6 +3,9 @@
     position: relative;
     color: #545454;
     width: 100%;
+    padding: 67px 0;
+    max-width: 880px;
+    margin: 0 auto;
 }
 
 .footer__copyright {
@@ -14,16 +17,8 @@
 }
 
 @media screen and  (max-width: 1440px) {
-    .footer {
-        padding: 67px 0;
-        max-width: 880px;
-        margin: 0 auto;
-    }
-
     .footer__copyright {
-            font-size: 18px;
             width: 100%;
-            line-height: 22px;
     }
 }
 
@@ -33,7 +28,7 @@
         }
     }
 
-    @media screen and (max-width: 580px) {
+    @media screen and (max-width: 594px) {
         .footer {
                 padding: 0;
                 max-width: 282px;
@@ -42,7 +37,6 @@
     
         .footer__copyright {
             font-size: 14px;
-            line-height: 22px;
             }   
     }
 
