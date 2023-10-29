@@ -51,7 +51,6 @@
     margin: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
-    overflow: hidden;
     max-width: 373px;
 }
 
@@ -91,7 +90,7 @@
     }
 }
 
-@media screen and (max-width: 892px) {
+@media screen and (max-width: 860px) {
     .profile {
         flex-direction: column;
     }
