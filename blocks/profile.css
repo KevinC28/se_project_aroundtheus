@@ -50,7 +50,6 @@
     grid-area: title;
     margin: 0;
     margin-left: 10px;
-    text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 373px;
 }
@@ -62,7 +61,6 @@
     grid-area: description;
     margin: 0;
     margin-left: 10px;
-    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     max-width: 373px;
@@ -92,7 +90,7 @@
     }
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 880px) {
     .profile {
         flex-direction: column;
     }
@@ -117,14 +115,13 @@
         text-align: center;
         margin: 0;
         padding: 14px 0 36px 0;
-
     }
 
     .profile__add-button {
         margin: 0;
         padding: 0;
         width: 100%;    
-        max-width: 282px; 
+        max-width: 282px;
     }
 
     .profile__edit-button {
