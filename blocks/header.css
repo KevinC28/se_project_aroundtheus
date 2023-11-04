@@ -5,7 +5,8 @@
 }
 
 .header__logo {
-    width: 176px;
+    width: 173px;
+    height: 33px;
 }
 
 
@@ -23,14 +24,10 @@
     opacity: 70%;
 }
 
-@media screen and (max-width: 1280px) {
-    .header {
-        padding: ;
-    }
+@media screen and (max-width: 925px) {
     
     .header__logo {
-        width: 173px;
-        height: 33px;
+       padding-left: 27px;
     }
 }
 
@@ -43,6 +40,7 @@
     .header__logo {
         width: 126px;
         height: 24px;
+        padding: 0;
     }
 
     .header::after {

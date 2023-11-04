@@ -50,8 +50,9 @@
     grid-area: title;
     margin: 0;
     margin-left: 10px;
-    white-space: normal;
-    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     max-width: 373px;
 }
 
@@ -62,8 +63,9 @@
     grid-area: description;
     margin: 0;
     margin-left: 10px;
-    white-space: normal;
-    word-wrap: break-word;
+    white-space: no-wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     max-width: 373px;
 }
 
@@ -139,8 +141,7 @@
     }
     
     .profile__description {
-        font-size: 14px;
-        font-weight: 400;
+        font-size: 14px; 
         line-height: 17px;
         width: 100%;
         text-align: center;
