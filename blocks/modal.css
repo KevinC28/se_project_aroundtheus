@@ -19,6 +19,8 @@
 
 .modal__container {
     position: relative;
+    top: 0;
+    left: 0;
     padding: 36px;
     width: 430px;
     height: 330px;
@@ -47,39 +49,29 @@
 }
 
 .modal__form {
-    background-color: #fff;
-    color: #000;
+    margin: 0;
+    padding: 0;
 }
 
 .modal__form_field1 {
-    /* border: none; */
+    border: none;
+    border-bottom: 1px solid;
     width: 358px;
-    top: 358px;
-    left: 333px;
-    margin: 0 36px 57px;
-    width: 358px;
+    margin: 0 36px 44px;
+    padding: 0;
+    padding-bottom: 13px;
     height: 14px;
     flex-shrink: 0;
     font-size: 14px;
     font-weight: 400;
 }
 
-.modal__form_field1::after {
-    border: none;
-    width: 100%;
-    content: "";
-    position: absolute;
-    border: 1px;
-    background-color: #000;
-    opacity: 20%;
-    /* background: #000;
-    height: 1px;
-    opacity: 20%;
+.modal__form_field1::placeholder {
+    color: #000;
+    height: 14px;
     width: 358px;
-    top: 358px;
-    left: 333px;
-    padding: 13px 36px 57px;
-    margin: 0; */
+    font-size: 14px;
+    line-height: 17px;
 }
 
 .modal__form_field2 {
@@ -89,15 +81,22 @@
     top: 358px;
     left: 333px;
     margin: 0 36px 48px;
-}
-
-.modal__form_field2::after {
-    border: none;
-    border-bottom: 1px solid;
+    padding: 0;
+    padding-bottom: 13px;
+    height: 14px;
+    flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 400;
     color: #000;
-    opacity: 20%;
+}    
+
+.modal__form_field2::placeholder {
+    color: #000;
+    height: 14px;
+    width: 358px;
+    font-size: 14px;
+    line-height: 17px;
 }
-    
 
 .modal__close {
     border: none;
@@ -116,12 +115,15 @@
 .modal__button {
     width: 358px;
     height: 50px;
-    top: 439px;
-    left: 461px;
+    top: 452px;
+    left: 586px;
     border-radius: 2px;
-    padding: 0 36px 0 36px;
+    font-size: 18px;
+    line-height: 22px;
+    padding: 0;
     display: fixed;
-    margin: 0;
+    margin-left: 36px;
+    margin-bottom: 37px;
     justify-content: center;
     align-items: center;
     background-color: #000;
