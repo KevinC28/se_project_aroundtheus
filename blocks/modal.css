@@ -14,13 +14,11 @@
 }
 
 .modal__opened {
-    display: flex;
+
 }
 
 .modal__container {
     position: relative;
-    top: 0;
-    left: 0;
     padding: 36px;
     width: 430px;
     height: 330px;
@@ -60,6 +58,7 @@
     margin: 0 36px 44px;
     padding: 0;
     padding-bottom: 13px;
+    line-height: 17px;
     height: 14px;
     flex-shrink: 0;
     font-size: 14px;
@@ -78,16 +77,16 @@
     border: none;
     border-bottom: 1px solid;
     width: 358px;
-    top: 358px;
-    left: 333px;
     margin: 0 36px 48px;
     padding: 0;
     padding-bottom: 13px;
     height: 14px;
+    line-height: 17px;
     flex-shrink: 0;
     font-size: 14px;
     font-weight: 400;
     color: #000;
+    word-wrap: break-word;
 }    
 
 .modal__form_field2::placeholder {
@@ -128,4 +127,9 @@
     align-items: center;
     background-color: #000;
     color: #fff;
+}
+
+@media screen and (max-width: 639px) {
+    
+    
 }
