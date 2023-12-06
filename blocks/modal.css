@@ -9,13 +9,12 @@
     display: flex;
     padding: 0 19px;
     color: #000;
-    display: flex;
-    /* display: none; */
+    display: none;
     font-family: "Inter", Arial, Helvetica, sans-serif;
 }
 
-.modal__opened {
-
+.modal_opened {
+    display: flex;
 }
 
 .modal__container {
@@ -150,10 +149,7 @@
         padding: 34px 36px;
      }
 
-    .modal__opened {
-   
-    }
-   
+
     .modal__container {
        position: relative;
        padding: 123px 19px;
