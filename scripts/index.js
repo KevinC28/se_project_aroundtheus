@@ -44,6 +44,18 @@ function closePopup() {
     profileEditModal.classList.remove('modal_opened');
 }
 
+function getCardElement(cardData) {
+    const cardElement = cardTemplate.cloneNode(true);
+    const cardImageEl = cardElement.querySelector('.cards__list-image');
+    const cardTitleEl = cardElement.querySelector('.cards__list-title');
+
+    cardTitleEl.textContent = cardData.name;
+    cardImageEl.setAttribute('src', cardData.link);
+    cardImageEl.setAttribute('alt', cardData.name);
+    
+    return cardElement;
+}
+
 // Event Handlers
 function handleProfileEditSubmit(e) {
     e.preventDefault();
@@ -65,14 +77,6 @@ profileCloseButton.addEventListener('click',closePopup);
 profileEditForm.addEventListener('submit', handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
-    
-
-    const cardElement = cardTemplate.cloneNode(true);
-    const cardImageEl = cardElement.querySelector('.cards__list-image');
-    const cardTitleEl = cardElement.querySelector('.cards__list-title');
-
-    cardTitleEl.textContent = cardData.name;
-    cardImageEl.textContent = cardData.alt;
-    // return cardElement;
-    cardListEl.append(cardElement);
+    const cardElement = getCardElement(cardData);
+    cardListEl.prepend(cardElement);
 });
