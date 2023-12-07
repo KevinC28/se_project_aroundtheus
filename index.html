@@ -36,92 +36,7 @@
           ></button>
         </section>
         <section class="cards page__section">
-          <ul class="cards__list">
-            <li class="cards__list-cards">
-              <img
-                src="./images/yosemite.jpg"
-                class="cards__list-image"
-                alt="Yosemite Valley"
-              />
-              <div class="cards__list-description">
-                <h2 class="cards__list-title">Yosemite Valley</h2>
-                <button
-                  type="button"
-                  class="cards__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="cards__list-cards">
-              <img
-                src="./images/lake-louise.jpg"
-                class="cards__list-image"
-                alt="Lake Louise"
-              />
-              <div class="cards__list-description">
-                <h2 class="cards__list-title">Lake Louise</h2>
-                <button
-                  type="button"
-                  class="cards__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="cards__list-cards">
-              <img
-                src="./images/bald-mountains.jpg"
-                class="cards__list-image"
-                alt="Bald Mountains"
-              />
-              <div class="cards__list-description">
-                <h2 class="cards__list-title">Bald Mountains</h2>
-                <button
-                  type="button"
-                  class="cards__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="cards__list-cards">
-              <img
-                src="./images/latemar.jpg"
-                class="cards__list-image"
-                alt="Latemar"
-              />
-              <div class="cards__list-description">
-                <h2 class="cards__list-title">Latemar</h2>
-                <button
-                  type="button"
-                  class="cards__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="cards__list-cards">
-              <img
-                src="./images/vanoise.jpg"
-                class="cards__list-image"
-                alt="Vanoise National Park"
-              />
-              <div class="cards__list-description">
-                <h2 class="cards__list-title">Vanoise National Park</h2>
-                <button
-                  type="button"
-                  class="cards__like-button"
-                ></button>
-              </div>
-            </li>
-            <li class="cards__list-cards">
-              <img
-                src="./images/lago.jpg"
-                class="cards__list-image"
-                alt="Lago di Braies"
-              />
-              <div class="cards__list-description">
-                <h2 class="cards__list-title">Lago di Braies</h2>
-                <button
-                  type="button"
-                  class="cards__like-button"
-                ></button>
-              </div>
-            </li>
-          </ul>
+          <ul class="cards__list"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -130,7 +45,7 @@
     </div>
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button class="modal__close" id="modal-close-button"></button>
+        <button class="modal__close"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form">
           <input 
@@ -151,6 +66,24 @@
         </form>
       </div>
     </div>
+
+
+    <template id="card-template">
+      <li class="cards__list-cards">
+        <img
+          src=""
+          class="cards__list-image"
+          alt=""
+        />
+        <div class="cards__list-description">
+          <h2 class="cards__list-title"></h2>
+          <button
+            type="button"
+            class="cards__like-button"
+          ></button>
+        </div>
+      </li>
+    </template>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
