@@ -2,8 +2,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 720px;
-    width: 1280px;
+    height: 100%;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
     display: flex;
@@ -15,6 +15,8 @@
 
 .modal_opened {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal__container {
@@ -110,13 +112,11 @@
 }
 
 @media screen and (max-width: 800px) {
-.modal {
-    padding: 180px;
-}
 
     .modal__heading {
         margin-top: 25px;
         margin-bottom: 54px;
+        padding: 0;
     }
     
     .modal__container {
@@ -139,28 +139,32 @@
 
 
 @media screen and (max-width: 480px) {
+    .modal {
+
+    }
+
     .modal__heading {
         font-family: "Inter", Arial, Helvetica, sans-serif;
-        margin: 0 0 102px;
+        margin: 0;
         width: 238px;
         font-size: 18px;
         font-weight: 900;
         line-height: 22px;
-        padding: 34px 36px;
+        padding: 25px 22px;
      }
 
 
     .modal__container {
        position: relative;
-       padding: 123px 19px;
+       padding: 0;
        width: 100%;
        height: 322px;
        margin: auto;
     }
 
     .modal__form-input {
-        padding: 0 22px 13px;
-        margin-left: 22px;
+        padding: 0;
+        margin: 0 auto 30px;
     }
 
     .modal__close {
@@ -173,8 +177,7 @@
 
 @media screen and (max-width: 320px) {
     .modal {
-        padding: -100000px;
-        margin: 500px;
+        
     }
 
     .modal__container {
