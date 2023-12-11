@@ -7,7 +7,6 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
     display: flex;
-    padding: 0 19px;
     color: #000;
     display: none;
     font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -98,7 +97,6 @@
     line-height: 22px;
     padding: 0;
     display: fixed;
-    margin-left: 36px;
     margin-bottom: 37px;
     justify-content: center;
     align-items: center;
@@ -146,14 +144,6 @@
         margin: 0;
     }
 }
-
-/* @media  and (max-width: 880px) {
-    .modal__container {
-
-    }
-    
-} */
-
 
 @media screen and (max-width: 320px) {
     .modal {
