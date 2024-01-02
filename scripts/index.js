@@ -80,3 +80,8 @@ initialCards.forEach((cardData) => {
     const cardElement = getCardElement(cardData);
     cardListEl.prepend(cardElement);
 });
+
+//for loop that inserts a card
+initialCards.forEach((cardData) => {
+    cardsWrap.prepend(getCardElement(cardData));
+})
