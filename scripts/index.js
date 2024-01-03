@@ -26,17 +26,32 @@ const initialCards = [
 ];
 
 
-// Elements
-const profileEditButton = document.querySelector('#profile-edit-button');
+const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
+
+// Wrappers
+const cardListEl = document.querySelector('.cards__list');
 const profileEditModal = document.querySelector('#profile-edit-modal');
-const profileCloseButton = profileEditModal.querySelector('.modal__close');
+const profileEditForm = profileEditModal.querySelector('.modal__form');
+
+// Buttons and other DOM nodes
+const profileEditButton = document.querySelector('#profile-edit-button');
 const profileTitle = document.querySelector('#profile-title');
 const profileDescription = document.querySelector('#profile-description');
+const profileCloseButton = profileEditModal.querySelector('.modal__close');
+
+//Form data
+
+
+// Elements
+
+
+
+
 const profileTitleInput = document.querySelector('#profile-title-input');
 const profileDescriptionInput = document.querySelector('#profile-description-input');
-const profileEditForm = profileEditModal.querySelector('.modal__form');
-const cardListEl = document.querySelector('.cards__list');
-const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
+
+
+
 
 
 // Functions
