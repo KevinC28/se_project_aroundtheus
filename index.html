@@ -67,42 +67,43 @@
         </form>
       </div>
       <!-- Add card modal -->
-      <div class="modal__container">
-        <button class="modal__close" type="button"></button>
-        <p class="modal__heading">New Place</p>
-        <form class="modal__form" id="add-card-form">
-          <input 
-          type="text" 
-          name="title" 
-          class="modal__form-field modal__form_title"
-          placeholder="Title"
-          id="profile-title-input"
-          >
-          <input 
-          type="text" 
-          name="url" 
-          class="modal__form-field modal__form_url" 
-          placeholder="Image URL"
-          id="profile-description-input"
-          >
-          <button class="modal__button">Save</button>
-        </form>
-      </div>
+    <div class="modal" id="profile-edit-modal">
+        <div class="modal__container">
+          <button class="modal__close" type="button"></button>
+          <p class="modal__heading">New Place</p>
+          <form class="modal__form" id="add-card-form">
+            <input 
+            type="text" 
+            name="title" 
+            class="modal__form-field modal__form_title"
+            placeholder="Title"
+            id="profile-title-input"
+            >
+            <input 
+            type="text" 
+            name="url" 
+            class="modal__form-field modal__form_url" 
+            placeholder="Image URL"
+            id="profile-description-input"
+            >
+            <button class="modal__button">Save</button>
+          </form>
+        </div>
     </div>
 
 
     <template id="card-template">
-      <li class="cards__list-cards">
+      <li class="card">
         <img
           src=""
-          class="cards__list-image"
+          class="card__image"
           alt=""
         />
-        <div class="cards__list-description">
-          <h2 class="cards__list-title"></h2>
+        <div class="card__description">
+          <h2 class="card__title"></h2>
           <button
             type="button"
-            class="cards__like-button"
+            class="card__like-button"
           ></button>
         </div>
       </li>

@@ -29,7 +29,7 @@ const initialCards = [
 const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
 
 // Wrappers
-const cardListEl = document.querySelector('.cards__list');
+const cardsWrap = document.querySelector('.cards__list');
 const profileEditModal = document.querySelector('#profile-edit-modal');
 const profileEditForm = profileEditModal.querySelector('.modal__form');
 
@@ -61,8 +61,8 @@ function closePopup() {
 
 function getCardElement(cardData) {
     const cardElement = cardTemplate.cloneNode(true);
-    const cardImageEl = cardElement.querySelector('.cards__list-image');
-    const cardTitleEl = cardElement.querySelector('.cards__list-title');
+    const cardImageEl = cardElement.querySelector('.card__image');
+    const cardTitleEl = cardElement.querySelector('.card__title');
 
     cardTitleEl.textContent = cardData.name;
     cardImageEl.setAttribute('src', cardData.link);
@@ -88,15 +88,14 @@ profileEditButton.addEventListener('click', () => {
 });
 
 profileCloseButton.addEventListener('click',closePopup);
-
 profileEditForm.addEventListener('submit', handleProfileEditSubmit);
 
-initialCards.forEach((cardData) => {
-    const cardElement = getCardElement(cardData);
-    cardListEl.prepend(cardElement);
-});
+// initialCards.forEach((cardData) => {
+//     const cardElement = getCardElement(cardData);
+//     cardListEl.prepend(cardElement);
+// });
 
 //for loop that inserts a card
 initialCards.forEach((cardData) => {
     cardsWrap.prepend(getCardElement(cardData));
-})
+});
