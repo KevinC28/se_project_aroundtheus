@@ -63,13 +63,13 @@
 }
 
 .card__delete-button {
-    background: url(../images/trash-active.svg);
+    background: url(../images/trash-active.svg) center no-repeat;
     width: 15px;
     height: 14px;
     border: none;
-    background-repeat: none;
     padding: 0;
     margin: 0;
+    flex-shrink: 0;
 }
 
 .card__delete-button:hover {

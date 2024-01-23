@@ -43,7 +43,8 @@ const addNewCardModalCloseButton = addCardModal.querySelector('.modal__close');
 const profileTitle = document.querySelector('.profile-title');
 const profileDescription = document.querySelector('.profile-description');
 const addNewCardButton = document.querySelector('.profile__add-button');
-// const previewImageModal = document.querySelector('.modal__preview-image'); 
+// const previewImage = document.querySelector('. preview-image');
+// const previewImageCloseButton = document
 
 
 //Form data
@@ -59,9 +60,10 @@ function openModal (modal) {
     modal.classList.add("modal_opened");
 }
 
-// function openpreview (modal) {
-// modal.c
+// function closePreview (preview-image) {
+// preview-image.classList.remove
 // }
+
 
 function renderCard(cardData) {
     const cardElement = getCardElement(cardData);
@@ -71,7 +73,7 @@ function renderCard(cardData) {
 
 
 const profileTitleInput = document.querySelector('#profile-title-input');
-const profileDescriptionInput = document.querySelector('#profile-description-input');
+const profileDescriptionInput = document.querySelector('#profile-description-input'); 
 
 
 
@@ -85,11 +87,6 @@ function getCardElement(cardData) {
     const cardTitleEl = cardElement.querySelector('.card__title');
     const likeButton = cardElement.querySelector('.card__like-button');
     const deleteButton = cardElement.querySelector('.card__delete-button');
-    
-// find delete button
-
-// add click listener to the cardIamge element
-    //openModal with previewImageModal
 
     likeButton.addEventListener('click', () => {
         likeButton.classList.toggle('card__like-button_active');
@@ -105,8 +102,12 @@ function getCardElement(cardData) {
         console.log(previewImageModal);
     });
 
-
-    // openModal(previewImageModal);
+    // cardImageElement.addEventListener('click', () => {    
+    // openModal(previewModal);
+    // previewModalImage.src = cardData.link;
+    // previewModalImage.alt = cardData.name;
+    //previewModalDescription.textContent = cardData.name;
+    // });
 
     cardTitleEl.textContent = cardData.name;
     cardImageEl.setAttribute('src', cardData.link);
