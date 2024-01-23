@@ -96,6 +96,34 @@
     color: #c4c4c4;
 }
 
+/* .modal__preview_container {
+    position: relative;
+    padding: 0;
+    width: 430px;
+    background-color: #fff;
+    margin: auto;
+    border-radius: 0px;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.15);
+} */
+
+.modal__image {
+    width: 100%;
+    max-width: 433px;
+    height: 540px;
+    max-height: 100%;
+    background-color: ;
+    margin: 0;
+    padding: 0;
+    top: 90px;
+}
+
+.modal__image-name {
+    color: #fff;
+    font-size: 12px;
+    margin: 0;
+    padding: 10px 0;
+}
+
 .modal__close {
     border: none;
     position: absolute;

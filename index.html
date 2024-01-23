@@ -92,11 +92,11 @@
         </div>
     </div>
     <!-- Preview image modal -->
-    <div class="preview" id="preview-image">
-      <div class="preview__container">
-        <button class="preview__close-button"></button>
-        <img class="preview__image"/>
-        <p class="preview__image-name"></p>
+    <div class="modal" id="preview-image">
+      <div class="modal__preview_container">
+        <button class="modal__close"></button>
+        <img class="modal__image"/>
+        <p class="modal__image-name"></p>
       </div>
     </div>
 
@@ -108,16 +108,17 @@
           class="card__image"
           alt=""
         />
+        <button
+        type="button"
+        class="card__delete-button"
+      ></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button
             type="button"
             class="card__like-button"
           ></button>
-          <button
-          type="button"
-          class="card__delete-button"
-        ></button>
+        
         </div>
       </li>
     </template>
