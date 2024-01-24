@@ -181,10 +181,6 @@
         height: 322px;
         padding: 0 22px;
     }
-
-    .modal_form {
-
-    }
     
     .modal__form-field {
         width: 282px;
@@ -235,6 +231,11 @@
     .modal__container {
         margin: 0;
         padding: 0;
+    }
+
+    .modal__preview_container {
+        width: 240px;
+        height: 299px;
     }
 
     .modal__form {

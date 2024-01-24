@@ -40,8 +40,8 @@ const previewImageModal = document.querySelector('#preview-image');
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileModalCloseButton = profileEditModal.querySelector('.modal__close');
 const addNewCardModalCloseButton = addCardModal.querySelector('.modal__close');
-const profileTitle = document.querySelector('.profile-title');
-const profileDescription = document.querySelector('.profile-description');
+const profileTitle = document.querySelector('#profile-title');
+const profileDescription = document.querySelector('#profile-description');
 const addNewCardButton = document.querySelector('.profile__add-button');
 const previewImage = previewImageModal.querySelector('.modal__image');
 const previewImageTitle = previewImageModal.querySelector('.modal__image-name');
@@ -50,7 +50,7 @@ const previewImageCloseButton = previewImageModal.querySelector('.modal__close')
 
 //Form data
 const nameInput = profileFormElement.querySelector('.modal__input_type_name');
-const jobInput = profileFormElement.querySelector('.modal__form-input_description');
+const jobInput = profileFormElement.querySelector('.modal__form_input_description');
 const cardTitleInput = addCardFormElement.querySelector('.modal__form_title');
 const cardUrlInput = addCardFormElement.querySelector('.modal__form_url');
 
@@ -136,10 +136,11 @@ profileEditButton.addEventListener('click', () => {
     jobInput.value = profileDescription.textContent;
     openModal(profileEditModal);
 });
+
 profileModalCloseButton.addEventListener('click', () => closeModal(profileEditModal));
 previewImageCloseButton.addEventListener('click', () => closeModal(previewImageModal));
 addNewCardButton.addEventListener('click', () => openModal(addCardModal));
 addNewCardModalCloseButton.addEventListener('click', () => closeModal(addCardModal));
 
 // for loop that inserts a card
-initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
+initialCards.forEach((cardData) => renderCard(cardData));
