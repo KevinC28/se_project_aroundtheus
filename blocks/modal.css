@@ -10,10 +10,18 @@
     color: #000;
     display: none;
     font-family: "Inter", Arial, Helvetica, sans-serif;
+    visibility: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: visibility 0s 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
     display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+    transition: visibility 0s, opacity 0.5s linear;
     justify-content: center;
     align-items: center;
 }
@@ -90,17 +98,17 @@
     color: #000;
 }
 
-.modal__form_input_description {
+.modal__input_type_description {
     color: #000;
 }
 .modal__form_title {
     margin: 0 0 30px;
-    color: #c4c4c4;
+    color: #000;
 }
 
 .modal__form_url {
     margin: 0;
-    color: #c4c4c4;
+    color: #000;
 }
 
 .modal__image {
@@ -186,7 +194,7 @@
         width: 282px;
     }
 
-    .modal__form_input_description {
+    .modal__input_type_description {
         margin-bottom: 46px;
     }
 
