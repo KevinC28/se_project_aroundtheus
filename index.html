@@ -21,19 +21,11 @@
           <div class="profile__info">
             <div class="profile__info">
             <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
-            <button
-              type="button"
-              class="profile__edit-button" 
-              id="profile-edit-button"
-            ></button>
+            <button type="button" class="profile__edit-button" id="profile-edit-button"></button>
             </div>
             <p class="profile__description" id="profile-description">Explorer</p>
           </div>
-          <button 
-          type="button"
-          aria-label="Create card" 
-          class="profile__add-button"
-          ></button>
+          <button type="button" aria-label="Create card" class="profile__add-button"></button>
         </section>
         <section class="cards page__section">
           <ul class="cards__list"></ul>
@@ -47,12 +39,12 @@
       <div class="modal" id="profile-edit-modal">
         <div class="modal__container">
           <button class="modal__close" type="button"></button>
-          <p class="modal__heading">Edit Profile</p>
+          <h3 class="modal__heading">Edit Profile</h3>
           <form class="modal__form">
             <input 
             type="text" 
             name="title" 
-            class="modal__form-field modal__input_type_name"
+            class="modal__form-field modal__form_input"
             placeholder="Name"
             id="profile-title-input"
             required
@@ -60,12 +52,12 @@
             <input 
             type="text" 
             name="description" 
-            class="modal__form-field modal__input_type_description" 
-            placeholder="Explorer"
+            class="modal__form-field modal__form_input" 
+            placeholder="About"
             id="profile-description-input"
             required
             >
-            <button class="modal__button">Save</button>
+            <button class="modal__button" type="submit">Save</button>
           </form>
         </div>
       </div>
@@ -78,7 +70,7 @@
             <input 
             type="text" 
             name="title" 
-            class="modal__form-field modal__form_title"
+            class="modal__form-field modal__form-title"
             placeholder="Title"
             id="profile-title-input"
             required
@@ -86,12 +78,12 @@
             <input 
             type="text" 
             name="url" 
-            class="modal__form-field modal__form_url" 
+            class="modal__form-field modal__form-url" 
             placeholder="Image link"
             id="profile-description-input"
             required
             >
-            <button class="modal__button" type="button">Create</button>
+            <button class="modal__button" type="submit">Create</button>
           </form>
         </div>
     </div>
@@ -110,16 +102,10 @@
           class="card__image"
           alt=""
         />
-        <button
-        type="button"
-        class="card__delete-button"
-      ></button>
+        <button type="button" class="card__delete-button"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
-          <button
-            type="button"
-            class="card__like-button"
-          ></button>
+          <button type="button" class="card__like-button"></button>
         </div>
       </li>
     </template>
