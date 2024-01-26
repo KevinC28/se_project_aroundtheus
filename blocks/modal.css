@@ -63,7 +63,7 @@
     font-family: "Inter", Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 900;
-    margin: 0 0 82px;
+    margin: 0 0 81px;
 }
 
 .modal__form-field {
@@ -78,7 +78,6 @@
     width: 100%;
     font-size: 14px;
     padding-bottom: 13px;
-
 }
 
 .modal__form-field::placeholder {
@@ -103,7 +102,7 @@
 
 
 .modal__form-url {
-    margin: 0;
+    margin: 30px 0 0;
     color: #000;
 }
 
@@ -195,7 +194,7 @@
     }
 
     .modal__form-url {
-        margin-bottom: 48px;
+        margin: 30px 0 48px;
         padding-bottom: 13px;
     }
     
@@ -224,7 +223,7 @@
     }
 
     .modal__heading_add-button {
-        padding: 25px 22px 76px;
+        padding: 25px 22px 56px;
         margin: 0;
     }
 
@@ -238,6 +237,9 @@
         padding: 0;
     }
 
+    .modal__form-field {
+        width: 232px;
+    }
 
     .modal__form {
         width: 232px;
@@ -256,13 +258,13 @@
     }
 
     .modal__form-url {
-        margin-bottom: 46px;
+        margin: 30px 0 46px;
         padding-bottom: 9px;
     }
 
     .modal__button {
         width: 100%;
-        margin: 45px 0 25px;
+        margin: 0 0 25px;
     }
 
 }
