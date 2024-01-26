@@ -190,13 +190,8 @@
         width: 282px;
     }
 
-    .modal__form_inputription {
-        margin-bottom: 46px;
-    }
-
-    .modal__form-title {
-        padding-bottom: 13px;
-
+    .modal__form_input:last-of-type {
+        margin: 30px 0 48px;
     }
 
     .modal__form-url {
