@@ -53,7 +53,7 @@ const previewImageCloseButton = previewImageModal.querySelector('.modal__close')
 const nameInput = profileFormElement.querySelector('.modal__form_input');
 const jobInput = profileFormElement.querySelector('.modal__form_input');
 const cardTitleInput = addCardFormElement.querySelector('.modal__form_input');
-const cardUrlInput = addCardFormElement.querySelector('.modal__form_input');
+const cardUrlInput = addCardFormElement.querySelector('#profile-description-input');
 
 function closeModal (modal) {
     modal.classList.remove('modal_opened');
