@@ -65,20 +65,6 @@
     margin: 0 0 81px;
 }
 
-.modal__form-field {
-    color: #c4c4c4;
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    padding: 0;
-    margin: 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    width: 100%;
-    font-size: 14px;
-    padding-bottom: 13px;
-}
-
 .modal__form-field::placeholder {
     color: #c4c4c4;
     font-size: 14px;
