@@ -38,7 +38,6 @@ const previewImageModal = document.querySelector('#preview-image');
 
 // Buttons and other DOM nodes
 const profileEditButton = document.querySelector('.profile__edit-button');
-// const openEditProfileModal = document.querySelector('.profile__edit-button');
 const profileModalCloseButton = profileEditModal.querySelector('.modal__close');
 const addNewCardModalCloseButton = addCardModal.querySelector('.modal__close');
 const profileTitle = document.querySelector('#profile-title');
@@ -50,9 +49,9 @@ const previewImageCloseButton = previewImageModal.querySelector('.modal__close')
 
 
 //Form data
-const nameInput = profileFormElement.querySelector('.modal__form_input');
-const jobInput = profileFormElement.querySelector('.modal__form_input');
-const cardTitleInput = addCardFormElement.querySelector('.modal__form_input');
+const nameInput = profileFormElement.querySelector('#profile-title-input');
+const jobInput = profileFormElement.querySelector('#profile-description-input');
+const cardTitleInput = addCardFormElement.querySelector('#profile-title-input');
 const cardUrlInput = addCardFormElement.querySelector('#profile-description-input');
 
 function closeModal (modal) {
