@@ -44,19 +44,25 @@
             <input 
             type="text" 
             name="title" 
-            class="modal__form_input"
+            class="modal__input"
             placeholder="Name"
-            id="profile-title-input"
+            id="profile-name"
+            minlength="2"
+            maxlength="40"
             required
             >
+            <span class="modal__error" id="profile-name-error">error message</span>
             <input 
             type="text" 
             name="description" 
-            class="modal__form_input" 
+            class="modal__input" 
             placeholder="About"
-            id="profile-description-input"
+            id="profile-about"
+            minlength="2"
+            maxlength="200"
             required
             >
+            <span class="modal__error" id="profile-about-error">error message</span>
             <button class="modal__button" type="submit">Save</button>
           </form>
         </div>
@@ -70,20 +76,25 @@
             <input 
             type="text" 
             name="title" 
-            class="modal__form_input"
+            class="modal__input"
             placeholder="Title"
-            id="profile-title-input"
+            id="profile-name"
+            minlength="1"
+            maxlength="30"
             required
             >
+            <span class="modal__error" id="profile-name-error">Error: Title is empty.</span>
             <input 
             type="text" 
             name="url" 
-            class="modal__form_input" 
+            class="modal__input" 
             placeholder="Image link"
-            id="profile-description-input"
+            id="profile-about"
+            type="url"
             required
             >
-            <button class="modal__button" type="submit">Create</button>
+            <span class="modal__error" id="profile-about-error">Error: link is empty.</span>
+            <button class="modal__button modal__button_disabled" type="submit" disabled>Create</button>
           </form>
         </div>
     </div>
@@ -109,6 +120,7 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js" defer></script>
+    <script defer src="./scripts/index.js" ></script>
+    <script defer src="./scripts/validation.js" ></script>
   </body>
 </html>

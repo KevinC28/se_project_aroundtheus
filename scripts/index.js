@@ -49,10 +49,10 @@ const previewImageCloseButton = previewImageModal.querySelector('.modal__close')
 
 
 //Form data
-const nameInput = profileFormElement.querySelector('#profile-title-input');
-const jobInput = profileFormElement.querySelector('#profile-description-input');
-const cardTitleInput = addCardFormElement.querySelector('#profile-title-input');
-const cardUrlInput = addCardFormElement.querySelector('#profile-description-input');
+const nameInput = profileFormElement.querySelector('#profile-name');
+const jobInput = profileFormElement.querySelector('#profile-about');
+const cardTitleInput = addCardFormElement.querySelector('#profile-name');
+const cardUrlInput = addCardFormElement.querySelector('#profile-about');
 
 function closeModal (modal) {
     modal.classList.remove('modal_opened');
@@ -66,8 +66,8 @@ function renderCard(cardData) {
     cardsWrap.prepend(cardElement);
 }
 
-const profileTitleInput = document.querySelector('#profile-title-input');
-const profileDescriptionInput = document.querySelector('#profile-description-input'); 
+const profileTitleInput = document.querySelector('#profile-name');
+const profileDescriptionInput = document.querySelector('#profile-about'); 
 
 
 
