@@ -27,13 +27,13 @@ function hasInvalidInput(inputList) {
 }
 
 //enableButton
-// function enableSubmitButton() {
-//     submitButton.classList.add(inactiveButton);
-//     submitButton.disabled = false;
+// function enableSubmitButton(submitButton, options) {
+//     submitButton.classList.add(inactiveButtonClass);
+//     submitButton.enabled = true;
 // }
 
 //disableButton
-// function disableSubmitButton() {
+// function disableSubmitButton(submitButton, options) {
 //     submitButton.classList.remove(inactiveButtonClass);
 //     submitButton.disabled = true;
 

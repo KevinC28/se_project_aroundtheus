@@ -44,7 +44,7 @@
             <input 
             type="text" 
             name="title" 
-            class="modal__input"
+            class="modal__input modal__input_type_error"
             placeholder="Name"
             id="profile-name"
             minlength="2"
@@ -55,7 +55,7 @@
             <input 
             type="text" 
             name="description" 
-            class="modal__input" 
+            class="modal__input modal__input_type_error" 
             placeholder="About"
             id="profile-about"
             minlength="2"
@@ -63,7 +63,7 @@
             required
             >
             <span class="modal__error" id="profile-about-error">Please fill out this field.</span>
-            <button class="modal__button modal__button_disabled" type="submit">Save</button>
+            <button class="modal__button modal__button_disabled" type="submit" disabled>Save</button>
           </form>
         </div>
       </div>
@@ -76,7 +76,7 @@
             <input 
             type="text" 
             name="title" 
-            class="modal__input"
+            class="modal__input modal__input_type_error"
             placeholder="Title"
             id="profile-name"
             minlength="1"
@@ -87,13 +87,13 @@
             <input 
             type="url" 
             name="url" 
-            class="modal__input" 
+            class="modal__input modal__input_type_error" 
             placeholder="Image link"
             id="profile-about"
             required
             >
-            <span class="modal__error" id="profile-about-error">Please enter a web address.</span>
-            <button class="modal__button modal__button_disabled" type="submit" disabled>Create</button>
+            <span class="modal__error modal__error_visible" id="profile-about-error">Please enter a web address.</span>
+            <button class="modal__button modal__button_disabled" type="submit" disabled>Save</button>
           </form>
         </div>
     </div>

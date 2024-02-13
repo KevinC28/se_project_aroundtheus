@@ -94,9 +94,12 @@
     padding: 0 0 13px 0;
 }
 
+.modal__input_type_error {
+    border-bottom: 1px solid rgb(255, 0, 0);
+}
 
 .modal__error {
-    color: red;
+    color: #f00;
     font-size: 12px;
 }
 
@@ -211,6 +214,12 @@
         margin-top: 25px;
         padding: 0;
         width: 282px;
+    }
+
+    .modal__button_disabled {
+        background-color: #fff;
+        border: 1px solid #c4c4c4 ;
+        color: #c4c4c4;
     }
 }
 
