@@ -51,7 +51,7 @@
             maxlength="40"
             required
             >
-            <span class="modal__error" id="profile-name-error">error message</span>
+            <span class="modal__error" id="profile-name-error">Please fill out this field.</span>
             <input 
             type="text" 
             name="description" 
@@ -62,8 +62,8 @@
             maxlength="200"
             required
             >
-            <span class="modal__error" id="profile-about-error">error message</span>
-            <button class="modal__button" type="submit">Save</button>
+            <span class="modal__error" id="profile-about-error">Please fill out this field.</span>
+            <button class="modal__button modal__button_disabled" type="submit">Save</button>
           </form>
         </div>
       </div>
@@ -83,17 +83,16 @@
             maxlength="30"
             required
             >
-            <span class="modal__error" id="profile-name-error">Error: Title is empty.</span>
+            <span class="modal__error" id="profile-name-error">Please fill out this field.</span>
             <input 
-            type="text" 
+            type="url" 
             name="url" 
             class="modal__input" 
             placeholder="Image link"
             id="profile-about"
-            type="url"
             required
             >
-            <span class="modal__error" id="profile-about-error">Error: link is empty.</span>
+            <span class="modal__error" id="profile-about-error">Please enter a web address.</span>
             <button class="modal__button modal__button_disabled" type="submit" disabled>Create</button>
           </form>
         </div>
