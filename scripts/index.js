@@ -66,7 +66,7 @@ function openModal (modal) {
 }
 
 function handleModalMouseDown(e) {
-    if (e.key === 'Escape' || e.target === document.querySelector(".modal")) {
+    if (e.key === 'Escape' || e.target === e.currentTarget) {
         closeModal(profileEditModal);
         closeModal(addCardModal);
         document.addEventListener('mousedown', handleModalMouseDown);
