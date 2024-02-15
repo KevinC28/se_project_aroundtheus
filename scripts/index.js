@@ -56,25 +56,32 @@ const cardUrlInput = addCardFormElement.querySelector('#profile-about');
 
 function openModal (modal) {
     modal.classList.add("modal_opened");
+    document.addEventListener('mousedown', handleModalMouseDown);
+    document.addEventListener('keydown', handleModalKeyDown);
 }
 
 function closeModal (modal) {
     modal.classList.remove('modal_opened');
     document.removeEventListener('mousedown', handleModalMouseDown);
-    document.removeEventListener('keydown', handleModalMouseDown);
+    document.removeEventListener('keydown', handleModalKeyDown);
 }
 
-function handleModalMouseDown(e) {
+function handleModalKeyDown(e) {
     if (e.key === 'Escape' || e.target === e.currentTarget) {
         closeModal(profileEditModal);
         closeModal(addCardModal);
-        document.addEventListener('mousedown', handleModalMouseDown);
-        document.addEventListener('keydown', handleModalMouseDown);
         }
 }
 
-document.addEventListener('mousedown', handleModalMouseDown);
-document.addEventListener('keydown', handleModalMouseDown);
+function handleModalMouseDown(e) {
+    if (e.mousedown === 'click || e.target === e.currentTarget'){
+        closeModal(profileEditModal);
+        closeModal(addCardModal);
+    }
+}
+
+// document.addEventListener('mousedown', handleModalMouseDown);
+// document.addEventListener('keydown', handleModalMouseDown);
 
 
 function renderCard(cardData) {
