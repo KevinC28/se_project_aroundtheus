@@ -54,15 +54,14 @@ const jobInput = profileFormElement.querySelector('#profile-about');
 const cardTitleInput = addCardFormElement.querySelector('#profile-name');
 const cardUrlInput = addCardFormElement.querySelector('#profile-about');
 
-function closeModal (modal) {
-    modal.classList.remove('modal_opened');
-    document.addEventListener('mousedown', handleModalMouseDown);
-    document.addEventListener('keydown', handleModalMouseDown);
-}
 function openModal (modal) {
     modal.classList.add("modal_opened");
-    document.addEventListener('mousedown', handleModalMouseDown);
-    document.addEventListener('keydown', handleModalMouseDown);
+}
+
+function closeModal (modal) {
+    modal.classList.remove('modal_opened');
+    document.removeEventListener('mousedown', handleModalMouseDown);
+    document.removeEventListener('keydown', handleModalMouseDown);
 }
 
 function handleModalMouseDown(e) {
@@ -73,6 +72,10 @@ function handleModalMouseDown(e) {
         document.addEventListener('keydown', handleModalMouseDown);
         }
 }
+
+document.addEventListener('mousedown', handleModalMouseDown);
+document.addEventListener('keydown', handleModalMouseDown);
+
 
 function renderCard(cardData) {
     const cardElement = getCardElement(cardData);
