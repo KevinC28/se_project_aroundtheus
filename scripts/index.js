@@ -56,9 +56,22 @@ const cardUrlInput = addCardFormElement.querySelector('#profile-about');
 
 function closeModal (modal) {
     modal.classList.remove('modal_opened');
+    document.addEventListener('mousedown', handleModalMouseDown);
+    document.addEventListener('keydown', handleModalMouseDown);
 }
 function openModal (modal) {
     modal.classList.add("modal_opened");
+    document.addEventListener('mousedown', handleModalMouseDown);
+    document.addEventListener('keydown', handleModalMouseDown);
+}
+
+function handleModalMouseDown(e) {
+    if (e. key === 'Escape' || e.target === document.querySelector(".modal")) {
+        closeModal(profileEditModal);
+        closeModal(addCardModal);
+        document.addEventListener('mousedown', handleModalMouseDown);
+        document.addEventListener('keydown', handleModalMouseDown);
+        }
 }
 
 function renderCard(cardData) {
