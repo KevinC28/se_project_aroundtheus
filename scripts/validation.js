@@ -15,10 +15,15 @@ function hideInputError(formElement, inputElement, {inputErrorClass, errorClass}
 }
 
 function checkInputValidity(formElement, inputElement, options) {
-    if(!inputElement.validity.valid) {
+    const { inputSelector, submitButtonSelector } = options;
+    const submitButton = formElement.querySelector(submitButtonSelector);
+
+    if (!inputElement.validity.valid) {
         return showInputError(formElement, inputElement, options);
     } 
     hideInputError(formElement, inputElement, options);
+
+    toggleButtonState([...formElement.querySelectorAll(inputSelector)], submitButton, options);
     
 }
 
@@ -49,8 +54,6 @@ function hasInvalidInput(inputList) {
 
 
 function toggleButtonState(inputElements, submitButton, {inactiveButtonClass}) {
-    let foundInvalid = false;
-
 
     if (hasInvalidInput(inputElements)) {
         submitButton.classList.add(inactiveButtonClass);
@@ -63,13 +66,13 @@ function toggleButtonState(inputElements, submitButton, {inactiveButtonClass}) {
 }
 
 function setEventListeners(formElement, options) {
-    const {inputSelector} = options
+    const {inputSelector, submitButtonSelector} = options;
     const inputElements = [...formElement.querySelectorAll(inputSelector)];
-    const submitButton = formElement.querySelector('.modal__button');
+    const submitButton = formElement.querySelector(submitButtonSelector);
     inputElements.forEach((inputElement) => {
         inputElement.addEventListener("input", (e) => {
-        checkInputValidity(formElement, inputElement, options);
-        toggleButtonState(inputElements, submitButton, options);
+            checkInputValidity(formElement, inputElement, options);
+            toggleButtonState(inputElements, submitButton, options);
         });
     });
 }
@@ -82,16 +85,6 @@ function enableValidation(options) {
         });
         
         setEventListeners(formElement, options);
-        // look for all inputs inside of form
-        // loop through all the inputs to see if all are valid
-            // if input is not valid
-            // get validation message
-            // add error class to input
-            // display error message
-            // disable button
-            // if all inputs are valid
-            // enable button
-            // reset error messages
     });
 }
 

@@ -168,6 +168,11 @@
     opacity: 80%;
 }
 
+.modal__button_disabled:hover {
+    opacity: 1;
+    cursor: default;
+}
+
 @media screen and (max-width: 917px) {
     .modal__heading {
         margin-top: 25px;

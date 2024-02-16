@@ -165,15 +165,14 @@ const modals = document.querySelectorAll('.modal');
 // Close modal by pressing escape key
 function handleModalKeyDown(e) {
     if (e.key === "Escape") {
-
         closeModal(openModal);
-}
+    }
 }
 
 
 // Close modal by clicking on overlay
 modals.forEach((modal) => {
-    modal.addEventListener('click', (e) => {
+    modal.addEventListener('mousedown', (e) => {
         if (e.target === modal) {
             closeModal(modal);
         }
