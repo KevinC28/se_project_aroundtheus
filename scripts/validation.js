@@ -22,9 +22,6 @@ function checkInputValidity(formElement, inputElement, options) {
         return showInputError(formElement, inputElement, options);
     } 
     hideInputError(formElement, inputElement, options);
-
-    toggleButtonState([...formElement.querySelectorAll(inputSelector)], submitButton, options);
-    
 }
 
 function hasInvalidInput(inputList) {
@@ -60,8 +57,8 @@ function toggleButtonState(inputElements, submitButton, {inactiveButtonClass}) {
         submitButton.disabled = true;
         return;
     } 
-        submitButton.classList.remove(inactiveButtonClass);
-        submitButton.disabled = false;
+    submitButton.classList.remove(inactiveButtonClass);
+    submitButton.disabled = false;
     
 }
 
