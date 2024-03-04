@@ -34,7 +34,7 @@ _toggleButtonState() {
 }
 
 _hasInvalidInput() {
-    return this._inputList.some((inputElement) => !inputElement.validity.validity);
+    return this._inputList.some((inputElement) => !inputElement.validity.valid);
 }
 
 _showInputError(inputElement, errorMessage) {
