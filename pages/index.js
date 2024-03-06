@@ -1,4 +1,5 @@
 import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
     {
@@ -33,7 +34,7 @@ const cardData =  {
 }
 
 const card = new Card(cardData, "#card-template");
-card.getView();
+card.generateCard();
 
 
 const cardTemplate = document.querySelector('#card-template').content.firstElementChild;

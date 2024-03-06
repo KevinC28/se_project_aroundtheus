@@ -1,5 +1,5 @@
 // enabling validation by calling enableValidation()
-// pass all the settings on call
+// pass all the config on call
 
 function showInputError(formElement, inputElement, {inputErrorClass, errorClass}) {
     const errorMessageElement = formElement.querySelector(`#${inputElement.id}-error`);

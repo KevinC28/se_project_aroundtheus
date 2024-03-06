@@ -1,14 +1,14 @@
-export default class FormValidator {
-    constructor(settings, formElement) {
-        this._settings = settings;
+class FormValidator {
+    constructor(formElement, config) {
+        this._config = config;
         this._formElement = formElement;
 
         this._inputList = Array.from(
             this._formElement
-            .querySelectorAll(this._settings.inputSelector)
+            .querySelectorAll(this._config.inputSelector)
         );
         this._buttonElement = this._formElement
-        .querySelector(this._settings.submitButtonSelector);
+        .querySelector(this._config.submitButtonSelector);
 
         this._toggleButtonState();
         this._addEventListeners();
@@ -25,10 +25,10 @@ _addEventListeners() {
 
 _toggleButtonState() {
     if (this._hasInvalidInput()) {
-        this._buttonElement.classList.add(this._settings.inactiveButtonClass);
+        this._buttonElement.classList.add(this._config.inactiveButtonClass);
         this._buttonElement.setAtrribute = ('disabled', true);
     } else {
-        this._buttonElement.classList.remove(this._settings.inactiveButtonClass);
+        this._buttonElement.classList.remove(this._config.inactiveButtonClass);
         this._buttonElement.removeAttribute('disabled');
     }
 }
@@ -39,14 +39,14 @@ _hasInvalidInput() {
 
 _showInputError(inputElement, errorMessage) {
     const errorElement = this._createErrorElement(errorMessage);
-    inputElement.classList.add(this._settings.errorClass);
+    inputElement.classList.add(this._config.errorClass);
     inputElement.parentNode.appendChild(errorElement);
 }
 
 _hideInputError(inputElement) {
-    const errorElement = inputElement.parentNode.querySelector(`.${this._settings.errorClass}`);
+    const errorElement = inputElement.parentNode.querySelector(`.${this._config.errorClass}`);
     if (errorElement) {
-        inputElement.classList.remove(this._settings.errorClass);
+        inputElement.classList.remove(this._config.errorClass);
         errorElement.remove();
         }
     }
@@ -75,8 +75,10 @@ resetValidation() {
 
 _createErrorElement(errorMessage) {
     const errorElement = document.createElement('div');
-    errorElement.className = this._settings.errorClass;
+    errorElement.className = this._config.errorClass;
     errorElement.textContent = errorMessage;
     return errorElement;
     }
 }
+
+export default FormValidator;
