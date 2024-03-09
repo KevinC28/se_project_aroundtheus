@@ -28,13 +28,21 @@ const initialCards = [
     },
 ];
 
+const config = {
+    formSelector: ".modal__form",
+    inputSelector: ".modal__input",
+    submitButtonSelector: ".modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__input_type_error",
+    errorClass: "modal__error_visible"
+};
+
 const cardData =  {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
 }
 
-const card = new Card(cardData, "#card-template");
-card.generateCard();
+
 
 
 const cardTemplate = document.querySelector('#card-template').content.firstElementChild;
@@ -66,6 +74,14 @@ const nameInput = profileFormElement.querySelector('#profile-name');
 const jobInput = profileFormElement.querySelector('#profile-about');
 const cardTitleInput = addCardFormElement.querySelector('#profile-name');
 const cardUrlInput = addCardFormElement.querySelector('#profile-about');
+
+
+
+const card = new Card(cardData, "#card-template");
+const cardFormValidator = new FormValidator(config, addCardFormElement)
+card.generateCard();
+
+cardFormValidator.enableValidation();
 
 function openModal(modal) {
     modal.classList.add("modal_opened");
