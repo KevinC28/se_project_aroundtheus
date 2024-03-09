@@ -59,7 +59,7 @@ generateCard() {
     this._cardTitleEl = this._cardElement.querySelector(".card__title");
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
-    this.cardTitle.textContent = this._name; 
+    // this.cardTitle.textContent = this._name; 
 
     this._setEventListeners();
 

@@ -78,10 +78,27 @@ function closeModal() {
 }
 
 
+// function renderCard(cardData, cardsWrap) {
+//     const { name, link } = cardData;
+//     const card = new Card(cardData, '#card-template', () => 
+//     handleImageClick(name, link)
+//     .generateCard());
 function renderCard(cardData) {
     const cardElement = getCardElement(cardData);
     cardsWrap.prepend(cardElement);
+    // cardsWrap.prepend(card);
 }
+
+// function handleImageClick(imageName, imageLink) {
+//     openModal(previewImageModal);
+//     profileDescription.textContent = imageName;
+//     previewImage.src = imageLink;
+//     previewImage.alt = imageName;
+// }
+
+
+
+
 
 const profileTitleInput = document.querySelector('#profile-name');
 const profileDescriptionInput = document.querySelector('#profile-about'); 
@@ -157,7 +174,7 @@ addNewCardButton.addEventListener('click', () => openModal(addCardModal));
 addNewCardModalCloseButton.addEventListener('click', () => closeModal(addCardModal));
 
 // for loop that inserts a card
-initialCards.forEach((cardData) => renderCard(cardData));
+initialCards.forEach((cardData) => renderCard(cardData, cardsWrap));
 
 
 // Overlay
