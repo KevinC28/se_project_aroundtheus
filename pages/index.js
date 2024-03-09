@@ -79,9 +79,11 @@ const cardUrlInput = addCardFormElement.querySelector('#profile-about');
 
 const card = new Card(cardData, "#card-template");
 const cardFormValidator = new FormValidator(config, addCardFormElement)
+const profileformValidator = new FormValidator(config, profileFormElement)
 card.generateCard();
 
 cardFormValidator.enableValidation();
+profileformValidator.enableValidation();
 
 function openModal(modal) {
     modal.classList.add("modal_opened");

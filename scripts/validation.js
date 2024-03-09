@@ -75,8 +75,6 @@ function setEventListeners(formElement, options) {
 
 function enableValidation(options) {
     const formElements = [...document.querySelectorAll(options.formSelector)];
-  
-    });
 }
 
 const config = {

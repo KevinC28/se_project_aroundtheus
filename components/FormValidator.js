@@ -44,6 +44,8 @@ _toggleButtonState() {
         this._submitButton.classList.remove(this._inactiveButtonClass);
         this._submitButton.removeAttribute('disabled');
     }
+
+    
 }
 
 _hasInvalidInput() {
