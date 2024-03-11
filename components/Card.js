@@ -1,36 +1,19 @@
-export default class Card {
-    constructor({name, link}, cardSelector, handleImageClick) {
-        this._name = name;
-        this._link = link;
+class Card {
+    constructor(cardData, cardSelector, handlePreviewImage) {
+        this._name = cardData.name;
+        this._link = cardData.link;
         this._cardSelector = cardSelector;
-        this.handleImageClick = handleImageClick;
+        this._handlePreviewImage = handlePreviewImage;
     }
 
 _setEventListeners() {
-    // card like button
-    this._cardElement
-    .querySelector('.card__like-button')
-    .addEventListener('click', () => {
-        this._handleLikeButton();
-    })
-    
-
-    // card deletebutton
-    this._cardElement
-    .querySelector('.card__delete-button')
-    .addEventListener( 'click', () => { 
-        this.handleDeleteCard();
-    })
-
-    this._cardImageEl.addEventListener( 'click', ()=> {
-        this._handleImageClick(this);
-    });
+    this._cardElement.querySelector('.card__like-button').addEventListener('click', () => this._handleLikeButton());
+    this._cardElement.querySelector('.card__delete-button').addEventListener( 'click', () => this._handleDeleteCard);
+    this._cardElement.querySelector('.card__image').addEventListener( 'click', () => this._handlePreviewImage);
 }
 
 _handleLikeButton() {
-    this._cardElement
-    .querySelector('.card__like-button')
-    .classList.toggle('card__like-button_active');
+    this._cardElement.querySelector('.card__like-button').classList.toggle('card__like-button_active');
 }
 
 _handleDeleteCard() {
@@ -38,20 +21,15 @@ _handleDeleteCard() {
     this._cardElement = null;
 }
 
-_handleImageClick() {
-    this._cardElement
-    .querySelector('#preview-image')
-    .addEventListener( 'click', () => {
-
-    })
+_handlePreviewImage() {
+    previewImage.src = cardData.link;
+    previewImage.alt = cardData.name;
+    previewImageTitle.textContent = cardData.name;
+    openModal(previewImageModal);
 }
 
-generateCard() {
-    this._cardElement = document
-    .querySelector(this._cardSelector)
-    .content.querySelector('.card')
-    .cloneNode(true);
-
+getTemplate() {
+    this._cardElement = document.querySelector(this._cardSelector).content.querySelector('.card').cloneNode(true);
     this._handleLikeButton = this._cardElement.querySelector(".card__like-button");
     this._handleDeleteCard = this._cardElement.querySelector(".card__delete-button").onclick;
 
@@ -59,11 +37,20 @@ generateCard() {
     this._cardTitleEl = this._cardElement.querySelector(".card__title");
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._name;
-    // this.cardTitle.textContent = this._name; 
 
     this._setEventListeners();
 
     return this._cardElement;
 
     }
+
+// getView () {
+//     this._cardElement = this._getTemplate();
+    
+//     this._cardElement.querySelector('.card__image').style.backgroundImage = `url(${this._link})`;
+//     this._cardElement.querySelector('.card__title').textContent = this._name;
+//     this._setEventListeners();
+//     }
 }
+
+export default Card;

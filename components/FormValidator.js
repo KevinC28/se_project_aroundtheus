@@ -1,12 +1,11 @@
 class FormValidator {
     constructor(config, formElement) {
         this._inputSelector = config.inputSelector;
-        this._formElement = formElement;
         this._submitButtonSelector = config.submitButtonSelector;
         this._errorClass = config.errorClass;
         this._inputErrorClass = config.inputErrorClass;
         this._inactiveButtonClass = config.inactiveButtonClass;
-
+        this._formElement = formElement;
 
 
         //     inputSelector: ".modal__input",
@@ -43,9 +42,7 @@ _toggleButtonState() {
     } else {
         this._submitButton.classList.remove(this._inactiveButtonClass);
         this._submitButton.removeAttribute('disabled');
-    }
-
-    
+    } 
 }
 
 _hasInvalidInput() {
