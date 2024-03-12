@@ -74,7 +74,7 @@ const cardTitleInput = addCardFormElement.querySelector('#profile-name');
 const cardUrlInput = addCardFormElement.querySelector('#profile-about');
 
 
-const card = new Card(cardData, cardTemplate);
+const card = new Card(cardData, '#card-template');
 const addformvalidator = new FormValidator(config, addCardFormElement);
 const editFormValidator = new FormValidator(config, editFormElement);
 card.getTemplate();
@@ -94,7 +94,7 @@ function closeModal() {
 
 
 function renderCard(cardData, cardsWrap) {
-    const card = new Card(cardData, cardTemplate);
+    const card = new Card(cardData, '#card-template');
     cardsWrap.prepend(card.getTemplate());
 }
 // function renderCard(cardData) {
@@ -110,7 +110,7 @@ const profileDescriptionInput = document.querySelector('#profile-about');
 
 // function getCardElement(cardData) {
 //     const cardElement = cardTemplate.cloneNode(true);
-//     const cardImageEl = cardElement.querySelector('.card__image');
+    // const cardImageEl = cardElement.querySelector('.card__image');
 //     const cardTitleEl = cardElement.querySelector('.card__title');
 //     const likeButton = cardElement.querySelector('.card__like-button');
 //     const deleteButton = cardElement.querySelector('.card__delete-button');
