@@ -71,7 +71,7 @@ const cardTemplate = document.querySelector('#card-template').content.firstEleme
 const cardListEl = document.querySelector('.cards__list');
 
 
-const card = new Card(cardData, '#card-template', handlePreviewImage);
+const card = new Card({name: 'name', link: 'link'}, '#card-template', handlePreviewImage);
 const addformvalidator = new FormValidator(config, addCardFormElement);
 const editFormValidator = new FormValidator(config, editFormElement);
 card.getView();
@@ -92,6 +92,9 @@ editFormValidator.enableValidation();
 function getCardElement(cardData) {
     return new Card(cardData, '#card-template', handlePreviewImage).getView();
 }
+
+// const cardElement = card.getView();
+// cardsWrap.prepend(cardElement);
 
 // function handleImagePreview() {
 //     openModal(previewImageModal);
@@ -147,16 +150,19 @@ function handleProfileEditSubmit(e) {
     e.target.reset();
 }
 
-function renderCard(cardData, cardsWrap) {
-    const card = new Card(cardData, '#card-template');
-    cardsWrap.prepend(card.getView());
-}
+// function renderCard(cardData, cardsWrap) {
+//     const card = new Card(cardData, '#card-template');
+//     cardsWrap.prepend(card.getView());
+// }
 
 function handleAddCardFormSubmit(e) {
     e.preventDefault();
     const name = cardTitleInput.value;
     const link = cardUrlInput.value;
-    renderCard({name, link}, cardsWrap);
+    const card = new Card({name, link}, '#card-template', handlePreviewImage);
+    const cardElement = card.getView();
+    cardsWrap.prepend(cardElement);
+    // renderCard({name, link}, cardsWrap);
     closeModal(addCardModal);
     e.target.reset();
 }
