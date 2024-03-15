@@ -3,7 +3,8 @@ class Card {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
-    this._handleImagePreview = () => handleImagePreview({ _link: this._link, _name: this._name });
+    this._handleImagePreview = () =>
+      handleImagePreview({ _link: this._link, _name: this._name });
   }
 
   _handleLikeButton = () => {
