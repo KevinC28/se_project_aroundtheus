@@ -160,3 +160,5 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardsWrap.prepend(cardElement);
 });
+
+console.log("Hello, world!");
