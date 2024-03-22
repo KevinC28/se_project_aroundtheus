@@ -24,7 +24,6 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "4.9.3"
   },
-  "keywords": [],
   "dependencies": {
     "core-js": "3.23.5"
   }
