@@ -6,21 +6,21 @@ body {
   font-family: "ubuntu-regular";
   font-style: normal;
   font-weight: 400;
-  src: url(../fonts/Ubuntu-Regular.ttf) format("truetype");
+  src: url(../fonts/fonts/Ubuntu-Regular.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "ubuntu-bold";
   font-style: normal;
   font-weight: 700;
-  src: url(../fonts/Ubuntu-Bold.ttf) format("truetype");
+  src: url(../fonts/fonts/Ubuntu-Bold.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "ubuntu-Italic";
   font-style: normal;
   font-weight: 700;
-  src: url(../fonts/Ubuntu-Italic.ttf) format("truetype");
+  src: url(../fonts/fonts/Ubuntu-Italic.ttf) format("truetype");
 }
 
 .page {
@@ -42,7 +42,7 @@ body {
 }
 
 .page__image_achievements {
-  background-image: url(../images/achievements.svg);
+  background-image: url(../images/achivements.svg);
   height: 444px;
   background-size: cover;
   background-repeat: no-repeat;

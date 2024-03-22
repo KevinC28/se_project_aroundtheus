@@ -38,9 +38,13 @@ module.exports = {
                 {
                     loader: "css-loader",
                 },
-            ]
+            ],
         },
-    ]
+        {
+            test: /\.(png|svg|jpg|jpeg|gif|woff(2)?|eot|ttf|otf)$/,
+            type: "asset/resource"
+        },
+    ],
 },
     plugins: [
         new HtmlWebpackPlugin({
