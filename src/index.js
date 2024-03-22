@@ -1,6 +1,7 @@
 import Card from "./components/Card.js";
 import FormValidator from "./components/FormValidator.js";
 import "./styles/index.css";
+import stepsSrc from "./images/steps.svg";
 
 const initialCards = [
   {
@@ -161,3 +162,11 @@ initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
   cardsWrap.prepend(cardElement);
 });
+
+const numbers = [2, 3, 5];
+const doubledNumbers = numbers.map(number => number * 2);
+
+console.log(doubledNumbers); // 4, 6, 10
+
+const stepsImage = document.getElementById("image-steps");
+stepsImage.src = stepsSrc;
