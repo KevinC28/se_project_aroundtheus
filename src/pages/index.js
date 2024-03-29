@@ -4,8 +4,8 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import "../pages/index.css";
-// import * as constants from "../utils/constants.js";
+// import "../pages/index.css";
+import * as constants from "../utils/constants.js";
 
 const profileForm = document.querySelector(".modal__form");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
@@ -72,7 +72,6 @@ const isEscEvent = (e, action) => {
   }
 };
 
-const ESC_KEYCODE = 27;
 
 function handlepopupImage(imageData) {
   openModal(popupImageModal);

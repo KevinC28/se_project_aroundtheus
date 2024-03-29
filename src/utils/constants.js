@@ -54,6 +54,6 @@ export const profileTitleInput = document.querySelector("#profile-name");
 export const profileDescriptionInput = document.querySelector("#profile-about");
 export const closeButtons = document.querySelectorAll(".modal__close");
 export const modals = document.querySelectorAll(".modal");
-
+export const ESC_KEYCODE = 27;
 
 
