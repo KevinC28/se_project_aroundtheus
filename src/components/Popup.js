@@ -1,7 +1,7 @@
 export default class Popup {
     constructor({ popupSelector }) {
         this._popupElement = document.querySelector(popupSelector);
-        // this._handleEscClose = this._handleEscClose.bind(this);
+        this.close = this.close.bind(this);
     }
 
     open() {
@@ -9,14 +9,20 @@ export default class Popup {
         document.addEventListener("keyup", this._handleEscUp);
     }
 
-    close() {
-        this._popupElement.classList.remove("modal_opened");
-        document.removeEventListener("keyup", this._handleEscUp);
-    }
-
+    _isEscEvent = (e, action) => {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+          action();
+        }
+      }
+    
     _handleEscUp = (e) => {
         e.preventDefault();
         this._isEscEvent(e, this.close);
+    }
+    
+    close() {
+        this._popupElement.classList.remove("modal_opened");
+        document.removeEventListener("keyup", this._handleEscUp);
     }
 
     setEventListeners() {
