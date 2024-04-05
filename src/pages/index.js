@@ -50,7 +50,9 @@ const newPopupWithImage = new PopupWithImage({
 });
 const newPopupWithForm = new PopupWithForm({ popupSelector: ".modal__form" });
 
-addNewCardButton.addEventListener("click", () => addCardModal(Popup));
+const addCardModalPopup = new Popup({ popupSelector: "#add-card-modal" });
+const profileEditModalPopup = new Popup({ popupSelector: "#profile-edit-modal" });
+
 
 const formValidators = {};
 
@@ -87,10 +89,18 @@ function handleAddCardFormSubmit(e) {
   e.target.reset();
 }
 
-// function openModal(modal) {
-//   modal.classList.add("modal_opened");
-//   document.addEventListener("keyup", handleEscUp);
-// }
+function openAddCardModal() {
+  addCardModalPopup.open();
+}
+
+function openEditModal() {
+  profileEditModalPopup.open();
+}
+
+
+addNewCardButton.addEventListener("click", () => openAddCardModal(Popup));
+profileEditButton.addEventListener("click", () => openEditModal(Popup));
+
 
 function handlepopupImage(imageData) {
   newPopupWithImage.open({ name: imageData.name, link: imageData.link });
@@ -99,11 +109,6 @@ function handlepopupImage(imageData) {
   // popupImageTitle.textContent = imageData.name;
   // popupWithImage.open();
 }
-
-// const closeModal = (modal) => {
-//   modal.classList.remove("modal_opened");
-//   document.removeEventListener("keyup", handleEscUp);
-// };
 
 const handleEscUp = (e) => {
   e.preventDefault();
@@ -130,8 +135,7 @@ function handleProfileEditButtonClick() {
   profileEditModal.open();
 }
 
-profileEditButton.addEventListener("click", () => newPopupWithForm.open());
-// const profileEditButton = new Popup({ popupSelector: "#profile-edit-modal" });
+
 
 closeButtons.forEach((button) => {
   const popup = new Popup({ popupSelector: `#${button.closest(".modal").id}` });
