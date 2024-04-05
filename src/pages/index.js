@@ -76,7 +76,7 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
-  profileEditModal.close();
+  profileEditModalPopup.close();
 }
 
 function handleAddCardFormSubmit(e) {
@@ -85,7 +85,7 @@ function handleAddCardFormSubmit(e) {
   const link = cardUrlInput.value;
   const cardElement = getCardElement({ name, link });
   cardsWrap.prepend(cardElement);
-  addCardModal.close();
+  addCardModalPopup.close();
   e.target.reset();
 }
 
@@ -122,10 +122,7 @@ const isEscEvent = (e, action) => {
   }
 };
 
-editFormElement.addEventListener(
-  "submit",
-  PopupWithForm.handleProfileEditSubmit
-);
+editFormElement.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 function handleProfileEditButtonClick() {
