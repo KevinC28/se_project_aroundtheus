@@ -17,7 +17,7 @@ module.exports = {
     stats: "errors-only",
     mode: "development",
     devServer: {
-        static: path.resolve(__dirname, "./dist"),
+        static: path.resolve(__dirname, "dist"),
         compress: true,
         port: 8080,
         open: true,
@@ -43,14 +43,14 @@ module.exports = {
         },
         {
             test: /\.(png|svg|jpg|jpeg|gif|woff(2)?|eot|ttf|otf)$/,
-            type: "asset/resource"
+            type: "asset/resource",
         },
     ],
 },
     plugins: [
         new HtmlWebpackPlugin({
             template: "./src/index.html",
-            favicon: "./src/images/favicon.ico"
+            favicon: "./src/images/favicon.ico",
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin(),
