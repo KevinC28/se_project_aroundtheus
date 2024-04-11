@@ -37,8 +37,11 @@ const modals = document.querySelectorAll(".modal");
 const ESC_KEYCODE = 27;
 
 const mySection = new Section(
-  { items: { initialCards, config }, 
-  renderer: getCardElement }, ".cards__list"
+ { items: initialCards, 
+  renderer: (cardData) => {
+    const card = getCardElement(cardData);
+    mySection.addItem(card.getView());
+  }}, ".cards__list"
 );
 
 const theUserInfo = new UserInfo({
@@ -50,12 +53,12 @@ const thePopupWithImage = new PopupWithImage({
 });
 
 const addCardModalPopup = new PopupWithForm({ 
-popupSelector: "#add-card-modal",
-handleFormSubmit: handleAddCardFormSubmit
+  popupSelector: "#add-card-modal",
+  handleFormSubmit: handleAddCardFormSubmit
 });
 const profileEditModalPopup = new PopupWithForm({ 
-popupSelector: "#profile-edit-modal",
-handleFormSubmit: handleProfileEditSubmit
+  popupSelector: "#profile-edit-modal",
+  handleFormSubmit: handleProfileEditSubmit
 });
 
 
@@ -74,18 +77,20 @@ const enableValidation = (config) => {
 enableValidation(config);
 
 function getCardElement(cardData) {
-  return new Card(cardData, "#card-template", handlePopupImage).getView();
+  // return new Card(cardData, "#card-template", handlePopupImage).getView();
+  const card = new Card(cardData, "#card-template", handlePopupImage);
+  
+  return card;
 }
 
 function handleProfileEditSubmit(userData) {
-  console.log(userData)
   theUserInfo.setUserInfo(userData);
   profileEditModalPopup.close();
 }
 
 function handleAddCardFormSubmit({ title, url}) {
-  const cardElement = getCardElement({ name: title, link: url });
-  mySection.addItem(cardElement);
+  const card = getCardElement({ name: title, link: url });
+  mySection.addItem(card.getView());
   addCardModalPopup.close();
 }
 
@@ -103,14 +108,7 @@ profileEditButton.addEventListener("click", handleProfileEditButtonClick);
 
 function handlePopupImage(imageData) {
   thePopupWithImage.open({ name: imageData.name, link: imageData.link });
-  // popupImage.src = imageData.link;
-  // popupImage.alt = imageData.name;
-  // popupImageTitle.textContent = imageData.name;
-  // popupWithImage.open();
 }
-
-editFormElement.addEventListener("submit", (e) => profileEditModalPopup._handleSubmit(e));
-addCardFormElement.addEventListener("submit", (e) => addCardModalPopup._handleSubmit(e));
 
 function handleProfileEditButtonClick() {
   const { name, job } = theUserInfo.getUserInfo();
@@ -119,11 +117,4 @@ function handleProfileEditButtonClick() {
   profileEditModalPopup.open();
 }
 
-initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardsWrap.prepend(cardElement);
-});
-
-// mySection.items.initialCards.forEach((cardData) => {
-//   mySection.renderer(cardData);
-// });
+mySection.renderItems();
