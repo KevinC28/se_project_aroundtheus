@@ -6,7 +6,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Popup from "../components/Popup.js";
-// import "../pages/index.css";
+import "../pages/index.css";
 
 // const nameSelector = '.profile__title';
 // const jobSelector = '.profile__description';
