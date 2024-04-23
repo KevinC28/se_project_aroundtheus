@@ -34,7 +34,6 @@ const profileTitleInput = document.querySelector("#profile-name");
 const profileDescriptionInput = document.querySelector("#profile-about");
 const closeButtons = document.querySelectorAll(".modal__close");
 const modals = document.querySelectorAll(".modal");
-const ESC_KEYCODE = 27;
 
 const mySection = new Section(
  { items: initialCards, 
