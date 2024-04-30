@@ -1,35 +1,94 @@
 class Api {
-    constructor({ baseUrl, headers }) {
-      this._baseUrl = baseUrl;
-      this._headers = headers;
-    }
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
+  }
 
-getInitialCards {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-     headers: {
-       authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6"
-     }
-   })
-     .then(res => {
-       if (res.ok) {
-         return res.json();
-       }
-       return Promise.reject(`Error: ${res.status}`);
-     });
+  _getResponseData(res) {
+    if (!res.ok) {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+    return res.json();
+  }
+
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers
+    })
+    .then(res => this._getResponseData(res));
+  }
+
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers
+    })
+    .then(res => this._getResponseData(res));
+  }
+
+  updateUserInfo({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        about: about
+      })
+    })
+    .then(res => this._getResponseData(res));
+  }
+
+  addNewCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: 'POST',
+      headers: this._headers,
+      body: JSON.stringify({
+        name: name,
+        link: link
+      })
+    })
+    .then(res => this._getResponseData(res));
+  }
+
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+    .then(res => this._getResponseData(res));
+  }
+
+  addLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: 'PUT',
+      headers: this._headers
+    })
+    .then(res => this._getResponseData(res));
+  }
+
+  removeLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+    .then(res => this._getResponseData(res));
+  }
+
+  updateAvatar(avatarLink) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: avatarLink
+      })
+    })
+    .then(res => this._getResponseData(res));
+  }
 }
 
-api.getInitialCards()
-   .then((result) => {
-     // process the result
-   })
-   .catch((err) => {
-     console.error(err); // log the error to the console
-   });
-
 const api = new Api({
-  baseUrl: 'https://api.around.students.nomoreparties.site',
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: 'd6e1c0b0-4b4b-4b6d-8b1d-6c7c7f4d6e6f',
-    'content-type': 'application/json'
+    authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+    "Content-Type": "application/json"
   }
 });
