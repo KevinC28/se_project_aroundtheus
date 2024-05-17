@@ -12,17 +12,10 @@ class Api {
   }
 
   getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-     headers: {
-       authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6"
-     }
-   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers
+    })
+    .then(res => this._getResponseData(res));
   }
 
   getUserInfo() {
