@@ -100,3 +100,12 @@ const api = new Api({
     "Content-Type": "application/json"
   }
 });
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+ .then(([userInfo, cards]) => {
+        displayUserInfo(userInfo);
+        cards.forEach(card => renderCard(card));
+  })
+ .catch((err) => {
+    console.error(err);
+  });
