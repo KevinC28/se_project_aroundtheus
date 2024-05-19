@@ -23,7 +23,8 @@ class Api {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers
     })
-    .then(res => this._getResponseData(res));
+    .then(res => this._getResponseData(res))
+    .catch(err => console.error(`Error: ${err}`));;
   }
 
   updateUserInfo({ name, about }) {
@@ -35,7 +36,8 @@ class Api {
         about: about
       })
     })
-    .then(res => this._getResponseData(res));
+    .then(res => this._getResponseData(res))
+    .catch(err => console.error(`Error: ${err}`));;
   }
 
   addNewCard({ name, link }) {
@@ -47,7 +49,8 @@ class Api {
         link: link
       })
     })
-    .then(res => this._getResponseData(res));
+    .then(res => this._getResponseData(res))
+    .catch(err => console.error(`Error: ${err}`));;
   }
 
   deleteCard(cardId) {
@@ -55,7 +58,8 @@ class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => this._getResponseData(res));
+    .then(res => this._getResponseData(res))
+    .catch(err => console.error(`Error: ${err}`));;
   }
 
   addLike(cardId) {
@@ -63,7 +67,8 @@ class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(res => this._getResponseData(res));
+    .then(res => this._getResponseData(res))
+    .catch(err => console.error(`Error: ${err}`));;
   }
 
   removeLike(cardId) {
@@ -71,7 +76,8 @@ class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(res => this._getResponseData(res));
+    .then(res => this._getResponseData(res))
+    .catch(err => console.error(`Error: ${err}`));
   }
 
   updateAvatar(avatarLink) {
@@ -82,7 +88,8 @@ class Api {
         avatar: avatarLink
       })
     })
-    .then(res => this._getResponseData(res));
+    .then(res => this._getResponseData(res))
+    .catch(err => console.error(`Error: ${err}`));;
   }
 }
 
