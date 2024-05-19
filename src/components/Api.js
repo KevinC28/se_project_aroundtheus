@@ -15,7 +15,8 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers
     })
-    .then(res => this._getResponseData(res));
+    .then(res => this._getResponseData(res))
+    .catch(err => console.error(`Error: ${err}`));
   }
 
   getUserInfo() {
