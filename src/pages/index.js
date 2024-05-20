@@ -5,8 +5,9 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import Popup from "../components/Popup.js";
 import "../pages/index.css";
+import Api from "../components/Api.js";
+import Popup from "../components/Popup.js";
 
 // const nameSelector = '.profile__title';
 // const jobSelector = '.profile__description';
@@ -34,6 +35,15 @@ const profileTitleInput = document.querySelector("#profile-name");
 const profileDescriptionInput = document.querySelector("#profile-about");
 const closeButtons = document.querySelectorAll(".modal__close");
 const modals = document.querySelectorAll(".modal");
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+    "Content-Type": "application/json"
+  }
+});
+
 
 const mySection = new Section(
  { items: initialCards, 
