@@ -1,11 +1,11 @@
 export default class Api {
   constructor(options) {
-    this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
+    this.baseUrl = options.baseUrl;
+    this.headers = options.headers;
   }
 
   fetchApi(url, options) {
-    return fetch(`${this._baseUrl}${url}`, options)
+    return fetch(`${this.baseUrl}${url}`, options)
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -17,21 +17,21 @@ export default class Api {
   getInitialCards() {
     return this.fetchApi('${this.baseUrl}/cards', {
       method: "GET",
-      headers: this._headers
+      headers: this.headers
     });
   }
 
   getUserInfo() {
     return this.fetchApi('${this.baseUrl}/users/me', {
       method: "GET",
-      headers: this._headers
+      headers: this.headers
     });
   }
 
   updateUserInfo() {
     return this.fetchApi('${this.baseUrl}/users/me', {
       method: "PATCH",
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify({name, job})
     });
   }
@@ -39,7 +39,7 @@ export default class Api {
   updateAvatarUser() {
     return this.fetchApi('${this.baseUrl}/users/me/avatar', {
       method: "PATCH",
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify({avatar})
     });
   }
@@ -47,7 +47,7 @@ export default class Api {
   addNewCard() {
     return this.fetchApi('${this.baseUrl}/cards', {
       method: "POST",
-      headers: this._headers,
+      headers: this.headers,
       body: JSON.stringify({name, link}),
     });
   }
@@ -55,21 +55,21 @@ export default class Api {
   deleteCard() {
     return this.fetchApi('${this.baseUrl}/cards/${cardId}', {
       method: "DELETE",
-      headers: this._headers,
+      headers: this.headers,
     });
   }
 
   addLike() {
     return this.fetchApi('${this.baseUrl}/cards/likes/${cardId}', {
       method: "PUT",
-      headers: this._headers,
+      headers: this.headers,
     });
   }
 
   removeLike() {
     return this.fetchApi('${this.baseUrl}/cards/likes/${cardId}', {
       method: "DELETE",
-      headers: this._headers,
+      headers: this.headers,
     });
   }
 }
