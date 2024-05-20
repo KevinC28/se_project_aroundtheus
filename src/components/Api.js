@@ -1,111 +1,75 @@
-export class Api {
-  constructor({ baseUrl, headers }) {
-    this._baseUrl = baseUrl;
-    this._headers = headers;
+export default class Api {
+  constructor(options) {
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
   }
 
-  _getResponseData(res) {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-    return res.json();
+  fetchApi(url, options) {
+    return fetch(`${this._baseUrl}${url}`, options)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      });
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return this.fetchApi('${this.baseUrl}/cards', {
+      method: "GET",
       headers: this._headers
-    })
-    .then(res => this._getResponseData(res))
-    .catch(err => console.error(`Error: ${err}`));
+    });
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return this.fetchApi('${this.baseUrl}/users/me', {
+      method: "GET",
       headers: this._headers
-    })
-    .then(res => this._getResponseData(res))
-    .catch(err => console.error(`Error: ${err}`));;
+    });
   }
 
-  updateUserInfo({ name, about }) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: 'PATCH',
+  updateUserInfo() {
+    return this.fetchApi('${this.baseUrl}/users/me', {
+      method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        name: name,
-        about: about
-      })
-    })
-    .then(res => this._getResponseData(res))
-    .catch(err => console.error(`Error: ${err}`));;
+      body: JSON.stringify({name, job})
+    });
   }
 
-  addNewCard({ name, link }) {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: 'POST',
+  updateAvatarUser() {
+    return this.fetchApi('${this.baseUrl}/users/me/avatar', {
+      method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        name: name,
-        link: link
-      })
-    })
-    .then(res => this._getResponseData(res))
-    .catch(err => console.error(`Error: ${err}`));;
+      body: JSON.stringify({avatar})
+    });
   }
 
-  deleteCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: 'DELETE',
-      headers: this._headers
-    })
-    .then(res => this._getResponseData(res))
-    .catch(err => console.error(`Error: ${err}`));;
-  }
-
-  addLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: 'PUT',
-      headers: this._headers
-    })
-    .then(res => this._getResponseData(res))
-    .catch(err => console.error(`Error: ${err}`));;
-  }
-
-  removeLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: 'DELETE',
-      headers: this._headers
-    })
-    .then(res => this._getResponseData(res))
-    .catch(err => console.error(`Error: ${err}`));
-  }
-
-  updateAvatar(avatarLink) {
-    return fetch(`${this._baseUrl}/users/me/avatar`, {
-      method: 'PATCH',
+  addNewCard() {
+    return this.fetchApi('${this.baseUrl}/cards', {
+      method: "POST",
       headers: this._headers,
-      body: JSON.stringify({
-        avatar: avatarLink
-      })
-    })
-    .then(res => this._getResponseData(res))
-    .catch(err => console.error(`Error: ${err}`));;
+      body: JSON.stringify({name, link}),
+    });
+  }
+
+  deleteCard() {
+    return this.fetchApi('${this.baseUrl}/cards/${cardId}', {
+      method: "DELETE",
+      headers: this._headers,
+    });
+  }
+
+  addLike() {
+    return this.fetchApi('${this.baseUrl}/cards/likes/${cardId}', {
+      method: "PUT",
+      headers: this._headers,
+    });
+  }
+
+  removeLike() {
+    return this.fetchApi('${this.baseUrl}/cards/likes/${cardId}', {
+      method: "DELETE",
+      headers: this._headers,
+    });
   }
 }
-
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
-    "Content-Type": "application/json"
-  }
-});
-
-Promise.all([api.getUserInfo(), api.getInitialCards()])
- .then(([userInfo, cards]) => {
-        displayUserInfo(userInfo);
-        cards.forEach(card => renderCard(card));
-  })
- .catch((err) => {
-    console.error(err);
-  });
