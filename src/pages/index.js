@@ -1,19 +1,18 @@
-import { initialCards, config } from "../utils/constants.js";
+import { config } from "../utils/constants.js"; 
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import "../pages/index.css"; 
+import "./index.css"; 
 import Api from "../components/Api.js";
-import Popup from "../components/Popup.js";
 
 // const nameSelector = '.profile__title';
 // const jobSelector = '.profile__description';
 const profileForm = document.querySelector(".modal__form");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
-const cardListEl = document.querySelector(".cards__list");
+// const cardListEl = document.querySelector(".cards__list");
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -44,14 +43,15 @@ const api = new Api({
   }
 });
 
+const newAvatarUrl = ' https://around-api.en.tripleten-services.com/v1/users/me/avatar';
 
-const mySection = new Section(
- { items: initialCards, 
-  renderer: (cardData) => {
-    const card = getCardElement(cardData);
-    mySection.addItem(card.getView());
-  }}, ".cards__list"
-);
+let mySection;
+
+const renderer = (cardData) => {
+  const card = getCardElement(cardData);
+  mySection.addItem(card.getView());
+}
+mySection = new Section({ renderer }, ".card__list");
 
 const theUserInfo = new UserInfo({
   nameSelector: "#profile__title",
@@ -69,6 +69,7 @@ const profileEditModalPopup = new PopupWithForm({
   popupSelector: "#profile-edit-modal",
   handleFormSubmit: handleProfileEditSubmit
 });
+
 
 
 const formValidators = {};
@@ -108,23 +109,19 @@ function handleProfileEditSubmit(userData) {
     });
 }
 
-// function handleAddCardFormSubmit({ title, url}) {
-//   const card = getCardElement({ name: title, link: url });
-//   mySection.addItem(card.getView());
-//   addCardModalPopup.close();
-// }
-
-function handleAddCardFormSubmit({ title, url }) {
-  api.addNewCard(title, url)
+function handleAddCardFormSubmit({ title, url}) {
+  api.addNewCard({ name: title, link: url })
     .then((newCard) => {
-      const card = getCardElement(newCard);
-      mySection.addItem(card.getView());
-      addCardModalPopup.close();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+     
+  const card = getCardElement(newCard);
+  mySection.addItem(card.getView());
+  addCardModalPopup.close();
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 }
+
 
 function openAddCardModal() {
   addCardModalPopup.open();
@@ -151,7 +148,6 @@ function handleProfileEditButtonClick() {
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([initialCards, userInfo]) => {
-    // Use the initialCards and userInfo here
     mySection.renderItems(initialCards);
     theUserInfo.setUserInfo(userInfo);
   })
@@ -159,5 +155,10 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     console.error(error);
   });
 
+  api.updateAvatarUser(newAvatarUrl)
+  .then((updatedUserInfo) => {
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
-mySection.renderItems();
