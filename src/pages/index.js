@@ -126,4 +126,14 @@ function handleProfileEditButtonClick() {
   profileEditModalPopup.open();
 }
 
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([initialCards, userInfo]) => {
+    // Use the initialCards and userInfo here
+    mySection.renderItems(initialCards);
+    theUserInfo.setUserInfo(userInfo);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
 mySection.renderItems();
