@@ -15,59 +15,59 @@ export default class Api {
   }
 
   getInitialCards() {
-    return this.fetchApi('${this.baseUrl}/cards', {
+    return this.fetchApi(`/cards`, {
       method: "GET",
       headers: this.headers
     });
   }
 
   getUserInfo() {
-    return this.fetchApi('${this.baseUrl}/users/me', {
+    return this.fetchApi(`/users/me`, {
       method: "GET",
       headers: this.headers
     });
   }
 
-  updateUserInfo() {
-    return this.fetchApi('${this.baseUrl}/users/me', {
+  updateUserInfo(name, job) {
+    return this.fetchApi(`/users/me`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({name, job})
     });
   }
 
-  updateAvatarUser() {
-    return this.fetchApi('${this.baseUrl}/users/me/avatar', {
+  updateAvatarUser(avatar) {
+    return this.fetchApi(`/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({avatar})
     });
   }
 
-  addNewCard() {
-    return this.fetchApi('${this.baseUrl}/cards', {
+  addNewCard(name, link) {
+    return this.fetchApi(`/cards`, {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify({name, link}),
     });
   }
 
-  deleteCard() {
-    return this.fetchApi('${this.baseUrl}/cards/${cardId}', {
+  deleteCard(cardId) {
+    return this.fetchApi(`/cards/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
     });
   }
 
-  addLike() {
-    return this.fetchApi('${this.baseUrl}/cards/likes/${cardId}', {
+  addLike(cardId) {
+    return this.fetchApi(`/cards/likes/${cardId}`, {
       method: "PUT",
       headers: this.headers,
     });
   }
 
-  removeLike() {
-    return this.fetchApi('${this.baseUrl}/cards/likes/${cardId}', {
+  removeLike(cardId) {
+    return this.fetchApi(`/cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
     });
