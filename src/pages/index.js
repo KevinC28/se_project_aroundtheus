@@ -114,7 +114,17 @@ function handleProfileEditSubmit(userData) {
 //   addCardModalPopup.close();
 // }
 
-
+function handleAddCardFormSubmit({ title, url }) {
+  api.addNewCard(title, url)
+    .then((newCard) => {
+      const card = getCardElement(newCard);
+      mySection.addItem(card.getView());
+      addCardModalPopup.close();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
 
 function openAddCardModal() {
   addCardModalPopup.open();
