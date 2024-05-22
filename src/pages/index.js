@@ -39,7 +39,7 @@ const modals = document.querySelectorAll(".modal");
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+    authorization: "2aa48a9b-dea9-44fc-a8a9-fa17b5150cea",
     "Content-Type": "application/json"
   }
 });
