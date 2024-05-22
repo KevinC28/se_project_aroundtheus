@@ -92,16 +92,29 @@ function getCardElement(cardData) {
   return card;
 }
 
+// function handleProfileEditSubmit(userData) {
+//   theUserInfo.setUserInfo(userData);
+//   profileEditModalPopup.close();
+// }
+
 function handleProfileEditSubmit(userData) {
-  theUserInfo.setUserInfo(userData);
-  profileEditModalPopup.close();
+  api.updateUserInfo(userData.name, userData.job)
+    .then((updatedUserInfo) => {
+      theUserInfo.setUserInfo(updatedUserInfo);
+      profileEditModalPopup.close();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }
 
-function handleAddCardFormSubmit({ title, url}) {
-  const card = getCardElement({ name: title, link: url });
-  mySection.addItem(card.getView());
-  addCardModalPopup.close();
-}
+// function handleAddCardFormSubmit({ title, url}) {
+//   const card = getCardElement({ name: title, link: url });
+//   mySection.addItem(card.getView());
+//   addCardModalPopup.close();
+// }
+
+
 
 function openAddCardModal() {
   addCardModalPopup.open();
@@ -135,5 +148,6 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
   .catch((error) => {
     console.error(error);
   });
+
 
 mySection.renderItems();
