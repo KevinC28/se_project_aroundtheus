@@ -5,7 +5,7 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import "../pages/index.css";
+import "../pages/index.css"; 
 import Api from "../components/Api.js";
 import Popup from "../components/Popup.js";
 
