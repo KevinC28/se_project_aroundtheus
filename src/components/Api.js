@@ -1,18 +1,18 @@
 export default class Api {
-  constructor(options) {
-    this.baseUrl = options.baseUrl;
-    this.headers = options.headers;
+  constructor({ baseUrl, headers }) {
+    this.baseUrl = baseUrl;
+    this.headers = headers;
   }
 
-  fetchApi(url, options) {
-    return fetch(`${this.baseUrl}${url}`, options)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      });
-  }
+  // fetchApi(url) {
+  //   return fetch(`${this.baseUrl}${url}`, options)
+  //     .then((res) => {
+  //       if (res.ok) {
+  //         return res.json();
+  //       }
+  //       return Promise.reject(`Error: ${res.status}`);
+  //     });
+  // }
 
   getInitialCards() {
     return this.fetchApi(`/cards`, {
