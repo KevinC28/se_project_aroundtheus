@@ -14,19 +14,32 @@ export default class Api {
   //     });
   // }
 
-  getInitialCards() {
-    return this.fetchApi(`/cards`, {
-      method: "GET",
-      headers: this.headers
-    });
+  _handleResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
   }
 
+  _request(url, options) {
+    return fetch(url, options).then(this._handleResponse);
+  }
+  
   getUserInfo() {
     return this.fetchApi(`/users/me`, {
       method: "GET",
       headers: this.headers
     });
   }
+
+
+  getInitialCards() {
+    return this.fetchApi(`/cards`, {
+      method: "GET",
+      headers: this.headers
+    });
+  }
+  
 
   updateUserInfo(name, job) {
     return this.fetchApi(`/users/me`, {
