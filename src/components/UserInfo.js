@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({ nameSelector, jobSelector }) {
-    this._name = document.querySelector('#profile-title');
-    this._description = document.querySelector('#profile-description');
+  constructor({ nameSelector, jobSelector, avatarSelector }) {
+    this._name = document.querySelector(nameSelector);
+    this._description = document.querySelector(jobSelector);
+    this._avatar = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
@@ -17,6 +18,6 @@ export default class UserInfo {
   }
 
   setUserAvatar(avatar) {
-    this._avatar.src = avatar;git 
+    this._avatar.src = avatar;
   }
 }

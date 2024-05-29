@@ -47,7 +47,7 @@ let mySection;
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
   .then(([userData, cardData]) => {
-    theUserInfo.setUserInfo(userInfo);
+    theUserInfo.setUserInfo(userData);
     theUserInfo.setUserAvatar(userData.avatar);
     mySection = new Section ({
       items: initialCards,
@@ -65,6 +65,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
 const theUserInfo = new UserInfo({
   nameSelector: "#profile__title",
   jobSelector: "#profile__description",
+  avatarSelector: ".profile__image"
 });
 const thePopupWithImage = new PopupWithImage({
   popupSelector: "#preview-image",
