@@ -27,7 +27,7 @@ export default class Api {
   
   getUserInfo() {
     return this._request(`${this.baseUrl}/users/me`, {
-      method: "GET",
+      // method: "GET",
       headers: this.headers
     });
   }
@@ -35,7 +35,7 @@ export default class Api {
 
   getInitialCards() {
     return this._request(`${this.baseUrl}/cards`, {
-      method: "GET",
+      // method: "GET",
       headers: this.headers
     });
   }
@@ -63,12 +63,12 @@ export default class Api {
       headers: this.headers,
       body: JSON.stringify({name, link}),
     })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    // .then(res => {
+    //   if (res.ok) {
+    //     return res.json();
+    //   }
+    //   return Promise.reject(`Error: ${res.status}`);
+    // });
   }
 
   deleteCard(cardId) {
