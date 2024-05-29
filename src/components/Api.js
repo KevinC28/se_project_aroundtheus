@@ -4,16 +4,6 @@ export default class Api {
     this.headers = headers;
   }
 
-  // fetchApi(url) {
-  //   return fetch(`${this.baseUrl}${url}`, options)
-  //     .then((res) => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       }
-  //       return Promise.reject(`Error: ${res.status}`);
-  //     });
-  // }
-
   _handleResponse(res) {
     if (res.ok) {
       return res.json();
@@ -63,12 +53,6 @@ export default class Api {
       headers: this.headers,
       body: JSON.stringify({name, link}),
     })
-    // .then(res => {
-    //   if (res.ok) {
-    //     return res.json();
-    //   }
-    //   return Promise.reject(`Error: ${res.status}`);
-    // });
   }
 
   deleteCard(cardId) {
