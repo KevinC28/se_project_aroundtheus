@@ -15,4 +15,8 @@ export default class UserInfo {
     this._name.textContent = name;
     this._description.textContent= job;
   }
+
+  setUserAvatar(avatar) {
+    this._avatar.src = avatar;git 
+  }
 }
