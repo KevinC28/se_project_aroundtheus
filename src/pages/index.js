@@ -43,16 +43,28 @@ const api = new Api({
   }
 });
 
-const newAvatarUrl = ' https://around-api.en.tripleten-services.com/v1/users/me/avatar';
-
 let mySection;
+
+Promise.all([api.getInitialCards(), api.getUserInfo()])
+  .then(([userData, cardData]) => {
+    theUserInfo.setUserInfo(userInfo);
+    theUserInfo.setUserAvatar(userData.avatar);
+    mySection = new Section ({
+      items: initialCards,
+      renderer: (cardData) => {
+        const card = getCardElement(cardData);
+        mySection.addItem(card.getView());
+      }
+    },
+     ".card__list");
+    mySection.renderItems();
+    })
+
 
 const renderer = (cardData) => {
   const card = getCardElement(cardData);
   mySection.addItem(card.getView());
 }
-mySection = new Section({ renderer }, ".card__list");
-
 const theUserInfo = new UserInfo({
   nameSelector: "#profile__title",
   jobSelector: "#profile__description",
@@ -145,20 +157,3 @@ function handleProfileEditButtonClick() {
   jobInput.value = job;
   profileEditModalPopup.open();
 }
-
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then(([initialCards, userInfo]) => {
-    mySection.renderItems(initialCards);
-    theUserInfo.setUserInfo(userInfo);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
-  api.updateAvatarUser(newAvatarUrl)
-  .then((updatedUserInfo) => {
-  })
-  .catch((error) => {
-    console.error(error);
-  });
-
