@@ -57,7 +57,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
       }
     },
      ".card__list");
-    mySection.renderItems();
+    mySection.renderItems;
     })
 
 
