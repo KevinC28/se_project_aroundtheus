@@ -61,10 +61,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     })
 
 
-const renderer = (cardData) => {
-  const card = getCardElement(cardData);
-  mySection.addItem(card.getView());
-}
+
 const theUserInfo = new UserInfo({
   nameSelector: "#profile__title",
   jobSelector: "#profile__description",
@@ -99,10 +96,8 @@ const enableValidation = (config) => {
 enableValidation(config);
 
 function getCardElement(cardData) {
-  // return new Card(cardData, "#card-template", handlePopupImage).getView();
-  const card = new Card(cardData, "#card-template", handlePopupImage);
-  
-  return card;
+  const card = new Card(cardData, "#card-template", handlePopupImage);  
+  return card.getView();
 }
 
 // function handleProfileEditSubmit(userData) {
