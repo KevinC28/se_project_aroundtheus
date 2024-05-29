@@ -26,7 +26,7 @@ export default class Api {
   }
   
   getUserInfo() {
-    return this.fetchApi(`/users/me`, {
+    return this._request(`${this.baseUrl}/users/me`, {
       method: "GET",
       headers: this.headers
     });
@@ -34,7 +34,7 @@ export default class Api {
 
 
   getInitialCards() {
-    return this.fetchApi(`/cards`, {
+    return this._request(`${this.baseUrl}/cards`, {
       method: "GET",
       headers: this.headers
     });
@@ -42,7 +42,7 @@ export default class Api {
   
 
   updateUserInfo(name, job) {
-    return this.fetchApi(`/users/me`, {
+    return this._request(`${this.baseUrl}/users/me`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({name, job})
@@ -50,7 +50,7 @@ export default class Api {
   }
 
   updateAvatarUser(avatar) {
-    return this.fetchApi(`/users/me/avatar`, {
+    return this._request(`${this.baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({avatar})
@@ -72,21 +72,21 @@ export default class Api {
   }
 
   deleteCard(cardId) {
-    return this.fetchApi(`/cards/${cardId}`, {
+    return this._request(`${this.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this.headers,
     });
   }
 
   addLike(cardId) {
-    return this.fetchApi(`/cards/likes/${cardId}`, {
+    return this._request(`${this.baseUrl}/cards/likes/${cardId}/likes`, {
       method: "PUT",
       headers: this.headers,
     });
   }
 
   removeLike(cardId) {
-    return this.fetchApi(`/cards/likes/${cardId}`, {
+    return this._request(`${this.baseUrl}/cards/likes/${cardId}/likes`, {
       method: "DELETE",
       headers: this.headers,
     });
