@@ -50,9 +50,9 @@ Promise.all([api.getInitialCards(), api.getUserInfo()])
     theUserInfo.setUserInfo(userData);
     theUserInfo.setUserAvatar(userData.avatar);
     mySection = new Section ({
-      items: initialCards,
-      renderer: (cardData) => {
-        const card = getCardElement(cardData);
+      items: cardData,
+      renderer: (item) => {
+        const card = getCardElement(item);
         mySection.addItem(card.getView());
       }
     },
