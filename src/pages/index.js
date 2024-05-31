@@ -8,8 +8,6 @@ import UserInfo from "../components/UserInfo.js";
 import "./index.css"; 
 import Api from "../components/Api.js";
 
-// const nameSelector = '.profile__title';
-// const jobSelector = '.profile__description';
 const profileForm = document.querySelector(".modal__form");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 // const cardListEl = document.querySelector(".cards__list");

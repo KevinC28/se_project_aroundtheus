@@ -3,12 +3,12 @@ export default class UserInfo {
     this._nameSelector = nameSelector;
     this._descriptionSelector = jobSelector;
     this._avatarSelector = avatarSelector;
-    // this._avatar = document.querySelector(avatarSelector);
+    this._avatar = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
-    this._name = document.querySelector(nameSelector);
-    this._job = document.querySelector(jobSelector);
+    this._name = document.querySelector(this._nameSelector);
+    this._job = document.querySelector(this._descriptionSelector);
     return {
       name: this._name.textContent,
       job: this._description.textContent,
@@ -24,6 +24,6 @@ export default class UserInfo {
 
   setUserAvatar(avatar) {
     this._avatar = document.querySelector(this._avatarSelector);
-      if (this._avatar) this._avatar.src = avatar;
+      // if (this._avatar) this._avatar.src = avatar;
   }
 }
