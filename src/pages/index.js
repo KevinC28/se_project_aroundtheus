@@ -48,10 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
   Promise.all([api.getInitialCards(), api.getUserInfo()])
     .then(([userData, cardData]) => {
       theUserInfo = new UserInfo({
-          nameSelector: ".profile__title",
-          aboutSelector: ".profile__description",
+          nameSelector: "#profile-title",
+          aboutSelector: "#profile-description",
           avatarSelector: ".profile__image"
       });
+      console.log(userData);
       theUserInfo.setUserInfo(userData);
       theUserInfo.setUserAvatar(userData.avatar);
       mySection = new Section ({
@@ -101,11 +102,6 @@ function getCardElement(cardData) {
   const card = new Card(cardData, "#card-template", handlePopupImage);  
   return card;
 }
-
-// function handleProfileEditSubmit(userData) {
-//   theUserInfo.setUserInfo(userData);
-//   profileEditModalPopup.close();
-// }
 
 function handleProfileEditSubmit(userData) {
   api.updateUserInfo(userData.name, userData.about)
