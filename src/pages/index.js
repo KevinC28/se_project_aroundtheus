@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
       theUserInfo = new UserInfo({
           nameSelector: "#profile-title",
           aboutSelector: "#profile-description",
-          avatarSelector: ".profile__image"
+          avatarSelector: "#profile__image"
       });
       theUserInfo.setUserInfo(userData);
       theUserInfo.setUserAvatar(userData.avatar);
