@@ -1,4 +1,4 @@
-import { config } from "../utils/constants.js"; 
+import { initialCards, config } from "../utils/constants.js"; 
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -10,7 +10,7 @@ import Api from "../components/Api.js";
 
 const profileForm = document.querySelector(".modal__form");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
-// const cardListEl = document.querySelector(".cards__list");
+const cardListEl = document.querySelector(".cards__list");
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -46,24 +46,24 @@ let theUserInfo;
 
 document.addEventListener('DOMContentLoaded', () => {
   Promise.all([api.getInitialCards(), api.getUserInfo()])
-    .then(([userData, cardData]) => {
+    .then(([cardData, userData]) => { // Corrected the order here
       theUserInfo = new UserInfo({
           nameSelector: "#profile-title",
           aboutSelector: "#profile-description",
           avatarSelector: ".profile__image"
       });
-      console.log(userData);
       theUserInfo.setUserInfo(userData);
       theUserInfo.setUserAvatar(userData.avatar);
+      
       mySection = new Section ({
-        items: cardData,
+        items: initialCards,
         renderer: (item) => {
           const card = getCardElement(item);
           mySection.addItem(card.getView());
         }
       },
       ".cards__list");
-      mySection.renderItems;
+      mySection.renderItems(cardData); // Now cardData should be an array
 
       profileEditButton.addEventListener("click", handleProfileEditButtonClick);
       })
