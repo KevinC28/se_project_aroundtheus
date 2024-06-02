@@ -17,7 +17,7 @@ export default class Api {
   
   getUserInfo() {
     return this._request(`${this.baseUrl}/users/me`, {
-      // method: "GET",
+      method: "GET",
       headers: this.headers
     });
   }
@@ -31,11 +31,11 @@ export default class Api {
   }
   
 
-  updateUserInfo(name, job) {
+  updateUserInfo(name, about) {
     return this._request(`${this.baseUrl}/users/me`, {
       method: "PATCH",
       headers: this.headers,
-      body: JSON.stringify({name, job})
+      body: JSON.stringify({name, about})
     });
   }
 

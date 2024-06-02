@@ -25,7 +25,7 @@ const profileDescription = document.querySelector("#profile-description");
 const popupImage = popupWithImage.querySelector(".modal__image");
 const popupImageTitle = popupWithImage.querySelector(".modal__image-name");
 const nameInput = editFormElement.querySelector("#profile-name");
-const jobInput = editFormElement.querySelector("#profile-about");
+const aboutInput = editFormElement.querySelector("#profile-about");
 const cardTitleInput = addCardFormElement.querySelector("#card-name");
 const cardUrlInput = addCardFormElement.querySelector("#card-about");
 const profileTitleInput = document.querySelector("#profile-name");
@@ -42,29 +42,32 @@ const api = new Api({
 });
 
 let mySection;
+let theUserInfo;
 
-Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then(([userData, cardData]) => {
-    theUserInfo.setUserInfo(userData);
-    theUserInfo.setUserAvatar(userData.avatar);
-    mySection = new Section ({
-      items: cardData,
-      renderer: (item) => {
-        const card = getCardElement(item);
-        mySection.addItem(card.getView());
-      }
-    },
-     ".card__list");
-    mySection.renderItems;
-    })
+document.addEventListener('DOMContentLoaded', () => {
+  Promise.all([api.getInitialCards(), api.getUserInfo()])
+    .then(([userData, cardData]) => {
+      theUserInfo = new UserInfo({
+          nameSelector: ".profile__title",
+          aboutSelector: ".profile__description",
+          avatarSelector: ".profile__image"
+      });
+      theUserInfo.setUserInfo(userData);
+      theUserInfo.setUserAvatar(userData.avatar);
+      mySection = new Section ({
+        items: cardData,
+        renderer: (item) => {
+          const card = getCardElement(item);
+          mySection.addItem(card.getView());
+        }
+      },
+      ".cards__list");
+      mySection.renderItems;
 
+      profileEditButton.addEventListener("click", handleProfileEditButtonClick);
+      })
+  });
 
-
-const theUserInfo = new UserInfo({
-  nameSelector: "#profile__title",
-  jobSelector: "#profile__description",
-  avatarSelector: ".profile__image"
-});
 const thePopupWithImage = new PopupWithImage({
   popupSelector: "#preview-image",
 });
@@ -96,7 +99,7 @@ enableValidation(config);
 
 function getCardElement(cardData) {
   const card = new Card(cardData, "#card-template", handlePopupImage);  
-  return card.getView();
+  return card;
 }
 
 // function handleProfileEditSubmit(userData) {
@@ -105,7 +108,7 @@ function getCardElement(cardData) {
 // }
 
 function handleProfileEditSubmit(userData) {
-  api.updateUserInfo(userData.name, userData.job)
+  api.updateUserInfo(userData.name, userData.about)
     .then((updatedUserInfo) => {
       theUserInfo.setUserInfo(updatedUserInfo);
       profileEditModalPopup.close();
@@ -139,15 +142,14 @@ function openEditModal() {
 
 
 addNewCardButton.addEventListener("click", openAddCardModal);
-profileEditButton.addEventListener("click", handleProfileEditButtonClick);
 
 function handlePopupImage(imageData) {
   thePopupWithImage.open({ name: imageData.name, link: imageData.link });
 }
 
 function handleProfileEditButtonClick() {
-  const { name, job } = theUserInfo.getUserInfo();
+  const { name, about } = theUserInfo.getUserInfo();
   nameInput.value = name;
-  jobInput.value = job;
+  aboutInput.value = about;
   profileEditModalPopup.open();
 }
