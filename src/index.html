@@ -120,11 +120,18 @@
       </li>
     </template>
     <!-- Delete button modal-->
+    <div class="modal" id="delete-button">
+      <div class="modal__container">
+        <button class="modal__close" type="button"></button>
+        <h3 class="modal__heading">Are you sure?</h3>
+        <button class="modal__button" type="submit">Yes</button>
+      </div>
+    </div>
     <template id="card-template">
       <li class="card">
         <button type="button" class="card__delete-button"></button>
         <div class="card__description">
-          <h2 class="card__title"></h2>
+          <h2 class="card__title">?</h2>
           <button type="button" class="card__like-button"></button>
         </div>
       </li>

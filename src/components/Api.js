@@ -48,9 +48,12 @@ export default class Api {
   }
 
   addNewCard({name, link}) {
-    return fetch(`${this.baseUrl}/cards`, {
+    return this._request(`${this.baseUrl}/cards`, {
       method: "POST",
-      headers: this.headers,
+      headers: {
+        ...this.headers,
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({name, link}),
     })
   }
