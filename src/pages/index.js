@@ -109,11 +109,8 @@ const enableValidation = (config) => {
 // }
 
 function handleDeleteButtonClick(event) {
-  // Get the card element
   const cardElement = event.target.closest(".card");
-  // Store the card to be deleted in a variable accessible to handleDeleteConfirmation
   cardToDelete = cardElement;
-  // Open the delete confirmation popup
   deleteConfirmationPopup.open();
 }
 
@@ -124,8 +121,8 @@ function handleDeleteConfirmation() {
 
 enableValidation(config);
 
-function getCardElement(cardData) {
-  const card = new Card(cardData, "#card-template", handlePopupImage);
+function getCardElement({name, link }) {
+  const card = new Card({name, link }, "#card-template", handlePopupImage);
   const cardElement = card.getView();
 
   const deleteButton = cardElement.querySelector(".card__delete-button");
@@ -149,7 +146,7 @@ function handleAddCardFormSubmit({ title, url}) {
   api.addNewCard({ name: title, link: url })
     .then((newCard) => {
      
-  const card = getCardElement(newCard);
+  const card = getCardElement({name: title , link: url });
   mySection.addItem(card.getView());
   addCardModalPopup.close();
   })
