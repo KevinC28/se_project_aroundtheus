@@ -41,6 +41,7 @@ const api = new Api({
   }
 });
 
+let cardToDelete = null;
 let mySection;
 let theUserInfo;
 
@@ -98,6 +99,14 @@ const enableValidation = (config) => {
     validator.enableValidation();
   });
 };
+document.addEventListener('click', event => {
+  if (event.target.matches('.card__delete-button')) {
+    const cardElement = event.target.closest(".card");
+    cardToDelete = cardElement;
+    deleteConfirmationPopup.open();
+  }
+});
+
 
 // function handleDeleteButtonClick(event) {
 //   const cardElement = event.target.closest(".card");
@@ -108,11 +117,13 @@ const enableValidation = (config) => {
 //   });
 // }
 
-function handleDeleteButtonClick(event) {
-  const cardElement = event.target.closest(".card");
-  cardToDelete = cardElement;
-  deleteConfirmationPopup.open();
-}
+// function handleDeleteButtonClick(event) {
+//   const cardElement = event.target.closest(".card");
+//   cardToDelete = cardElement;
+//   deleteConfirmationPopup.open();
+// }
+
+
 
 function handleDeleteConfirmation() {
   cardToDelete.remove();
@@ -125,8 +136,8 @@ function getCardElement({name, link }) {
   const card = new Card({name, link }, "#card-template", handlePopupImage);
   const cardElement = card.getView();
 
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  deleteButton.addEventListener("click", handleDeleteButtonClick);
+  // const deleteButton = cardElement.querySelector(".card__delete-button");
+  // deleteButton.addEventListener("click", handleDeleteButtonClick);
 
   return card;
 }
@@ -158,10 +169,6 @@ function handleAddCardFormSubmit({ title, url}) {
 
 function openAddCardModal() {
   addCardModalPopup.open();
-}
-
-function openEditModal() {
-  profileEditModalPopup.open();
 }
 
 
