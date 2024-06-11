@@ -83,7 +83,7 @@ const profileEditModalPopup = new PopupWithForm({
   handleFormSubmit: handleProfileEditSubmit
 });
 const deleteConfirmationPopup = new PopupWithForm({
-  popupSelector: "#delete-button",
+  popupSelector: "#delete-modal",
   handleFormSubmit: handleDeleteConfirmation
 });
 
@@ -99,6 +99,21 @@ const enableValidation = (config) => {
     validator.enableValidation();
   });
 };
+
+
+
+function handleDeleteConfirmation() {
+  api.deleteCard(cardToDelete.getAttribute('id'))
+    .then(() => {
+      // deleteCard();
+      cardToDelete.remove();
+      deleteConfirmationPopup.close();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 document.addEventListener('click', event => {
   if (event.target.matches('.card__delete-button')) {
     const cardElement = event.target.closest(".card");
@@ -107,37 +122,11 @@ document.addEventListener('click', event => {
   }
 });
 
-
-// function handleDeleteButtonClick(event) {
-//   const cardElement = event.target.closest(".card");
-//   const deleteButton = cardElement.querySelector(".card__delete-button");
-//   deleteButton.addEventListener("click", () => {
-//     cardToDelete = cardElement;
-//     deleteConfirmationPopup.open();
-//   });
-// }
-
-// function handleDeleteButtonClick(event) {
-//   const cardElement = event.target.closest(".card");
-//   cardToDelete = cardElement;
-//   deleteConfirmationPopup.open();
-// }
-
-
-
-function handleDeleteConfirmation() {
-  cardToDelete.remove();
-  deleteConfirmationPopup.close();
-}
-
 enableValidation(config);
 
 function getCardElement({name, link }) {
   const card = new Card({name, link }, "#card-template", handlePopupImage);
   const cardElement = card.getView();
-
-  // const deleteButton = cardElement.querySelector(".card__delete-button");
-  // deleteButton.addEventListener("click", handleDeleteButtonClick);
 
   return card;
 }
@@ -165,7 +154,6 @@ function handleAddCardFormSubmit({ title, url}) {
     console.error(error);
   });
 }
-
 
 function openAddCardModal() {
   addCardModalPopup.open();
