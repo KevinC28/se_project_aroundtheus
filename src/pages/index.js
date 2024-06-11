@@ -8,30 +8,12 @@ import UserInfo from "../components/UserInfo.js";
 import "./index.css"; 
 import Api from "../components/Api.js";
 
-const profileForm = document.querySelector(".modal__form");
-const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
-const cardListEl = document.querySelector(".cards__list");
-
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
-const addCardModal = document.querySelector("#add-card-modal");
-const addCardFormElement = addCardModal.querySelector(".modal__form");
-const cardsWrap = document.querySelector(".cards__list");
 const editFormElement = profileEditModal.querySelector(".modal__form");
-const popupWithImage = document.querySelector("#preview-image");
 const addNewCardButton = document.querySelector(".profile__add-button");
-const profileTitle = document.querySelector("#profile-title");
-const profileDescription = document.querySelector("#profile-description");
-const popupImage = popupWithImage.querySelector(".modal__image");
-const popupImageTitle = popupWithImage.querySelector(".modal__image-name");
 const nameInput = editFormElement.querySelector("#profile-name");
 const aboutInput = editFormElement.querySelector("#profile-about");
-const cardTitleInput = addCardFormElement.querySelector("#card-name");
-const cardUrlInput = addCardFormElement.querySelector("#card-about");
-const profileTitleInput = document.querySelector("#profile-name");
-const profileDescriptionInput = document.querySelector("#profile-about");
-const closeButtons = document.querySelectorAll(".modal__close");
-const modals = document.querySelectorAll(".modal");
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -41,7 +23,7 @@ const api = new Api({
   }
 });
 
-let cardToDelete = null;
+let deleteCardId = '';
 let mySection;
 let theUserInfo;
 
@@ -78,10 +60,12 @@ const addCardModalPopup = new PopupWithForm({
   popupSelector: "#add-card-modal",
   handleFormSubmit: handleAddCardFormSubmit
 });
+
 const profileEditModalPopup = new PopupWithForm({ 
   popupSelector: "#profile-edit-modal",
   handleFormSubmit: handleProfileEditSubmit
 });
+
 const deleteConfirmationPopup = new PopupWithForm({
   popupSelector: "#delete-modal",
   handleFormSubmit: handleDeleteConfirmation
@@ -100,34 +84,12 @@ const enableValidation = (config) => {
   });
 };
 
-
-
-function handleDeleteConfirmation() {
-  api.deleteCard(cardToDelete.getAttribute('id'))
-    .then(() => {
-      // deleteCard();
-      cardToDelete.remove();
-      deleteConfirmationPopup.close();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-}
-
-document.addEventListener('click', event => {
-  if (event.target.matches('.card__delete-button')) {
-    const cardElement = event.target.closest(".card");
-    cardToDelete = cardElement;
-    deleteConfirmationPopup.open();
-  }
-});
-
 enableValidation(config);
 
-function getCardElement({name, link }) {
-  const card = new Card({name, link }, "#card-template", handlePopupImage);
+function getCardElement({id, name, link }) {
+  const card = new Card({id, name, link }, "#card-template", handlePopupImage, handleDeleteConfirmation, handleLikeButton);
   const cardElement = card.getView();
-
+  cardElement.setAttribute('id', `card-${id}`); // Set the id attribute
   return card;
 }
 
@@ -171,4 +133,45 @@ function handleProfileEditButtonClick() {
   nameInput.value = name;
   aboutInput.value = about;
   profileEditModalPopup.open();
+}
+
+// Delete Card
+
+function handleDeleteConfirmation() {
+  const cardId = deleteCardId.getAttribute('id');
+  api.deleteCard(cardId)
+   .then(() => {
+      deleteCardId.remove();
+      deleteConfirmationPopup.close();
+    })
+   .catch((error) => {
+      console.error(error);
+    });
+}
+
+document.addEventListener('click', event => {
+  if (event.target.matches('.card__delete-button')) {
+    const cardElement = event.target.closest(".card");
+    deleteCardId = cardElement;
+    deleteConfirmationPopup.open();
+  }
+});
+
+// Like/Dislike
+
+function handleLikeButton(likeButton, likedStatus, cardId) {
+  if (likedStatus) {
+    api.removeLike(cardId)
+    .then(() => {
+      likeButton.classList.remove('card__like-button_active');
+    })
+    .catch((error) => {
+      console.error("Error removing like", error);
+    });
+  } else {
+    api.addLike(cardId)
+    .then(() => {
+      likeButton.classList.add('card__like-button_active');
+    })
+  }
 }
