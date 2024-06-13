@@ -68,7 +68,7 @@ const profileEditModalPopup = new PopupWithForm({
 
 const deleteConfirmationPopup = new PopupWithForm({
   popupSelector: "#delete-modal",
-  handleFormSubmit: handleDeleteConfirmation
+  handleDeleteSubmit: handleDeleteConfirmation
 });
 
 
