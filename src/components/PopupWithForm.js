@@ -21,6 +21,7 @@ export default class PopupWithForm extends Popup {
     _handleSubmit(e) {
         e.preventDefault();
         this._handleFormSubmit(this._getInputValues());
+        this._handleCardDelete();
     }
 
     _handleDeleteSubmit(e) {
@@ -36,13 +37,13 @@ export default class PopupWithForm extends Popup {
     open() {
         super.open();
         this._popupForm.addEventListener("submit", this._handleSubmit);
-        this._popupForm.addEventListener("submit", this._handleDeleteSubmit);
+        // this._popupForm.addEventListener("submit", this._handleDeleteSubmit);
     }
 
     close() {
         super.close();
         this._popupForm.removeEventListener("submit", this._handleSubmit);
-        this._popupForm.removeEventListener("submit", this._handleDeleteSubmit);
-        this._popupForm.reset();
+        // this._popupForm.removeEventListener("submit", this._handleDeleteSubmit);
+        // this._popupForm.reset();
     }
 }

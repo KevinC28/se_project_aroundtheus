@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       },
       ".cards__list");
-      mySection.renderItems(cardData); // Now cardData should be an array
+      mySection.renderItems(cardData);
 
       profileEditButton.addEventListener("click", handleProfileEditButtonClick);
       })
@@ -68,7 +68,7 @@ const profileEditModalPopup = new PopupWithForm({
 
 const deleteConfirmationPopup = new PopupWithForm({
   popupSelector: "#delete-modal",
-  handleDeleteSubmit: handleDeleteConfirmation
+  handleFormSubmit: handleDeleteConfirmation
 });
 
 
@@ -89,7 +89,7 @@ enableValidation(config);
 function getCardElement({id, name, link }) {
   const card = new Card({id, name, link }, "#card-template", handlePopupImage, handleDeleteConfirmation, handleLikeButton);
   const cardElement = card.getView();
-  cardElement.setAttribute('id', `card-${id}`); // Set the id attribute
+  cardElement.setAttribute('id', `card-${id}`);
   return card;
 }
 
