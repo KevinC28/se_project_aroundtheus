@@ -14,6 +14,7 @@ const editFormElement = profileEditModal.querySelector(".modal__form");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const nameInput = editFormElement.querySelector("#profile-name");
 const aboutInput = editFormElement.querySelector("#profile-about");
+const deleteCardButton = document.querySelector(".modal__form");
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -141,7 +142,8 @@ function handleDeleteConfirmation() {
   const cardId = deleteCardId.getAttribute('id');
   api.deleteCard(cardId)
    .then(() => {
-      deleteCardId.remove();
+      // deleteCardId.remove();
+      deleteCardId.parentNode.removeChild(deleteCardId);
       deleteConfirmationPopup.close();
     })
    .catch((error) => {
@@ -152,10 +154,16 @@ function handleDeleteConfirmation() {
 document.addEventListener('click', event => {
   if (event.target.matches('.card__delete-button')) {
     const cardElement = event.target.closest(".card");
-    deleteCardId = cardElement;
-    deleteConfirmationPopup.open();
+    // deleteCardId = cardElement;
+    // deleteConfirmationPopup.open();
+    opendeleteConfirmation(cardElement);
   }
 });
+
+function opendeleteConfirmation(cardElement) {
+  deleteCardId = cardElement;
+  deleteConfirmationPopup.open();
+}
 
 // Like/Dislike
 
