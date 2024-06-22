@@ -7,6 +7,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import "./index.css"; 
 import Api from "../components/Api.js";
+import PopupConfirmDelete from "../components/PopupConfirmDelete.js";
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditButton = document.querySelector(".profile__edit-button");
@@ -38,9 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       theUserInfo.setUserInfo(userData);
       theUserInfo.setUserAvatar(userData.avatar);
+      console.log(cardData);
       
       mySection = new Section ({
-        items: initialCards,
+        items: cardData,
         renderer: (item) => {
           const card = getCardElement(item);
           mySection.addItem(card.getView());
@@ -67,9 +69,8 @@ const profileEditModalPopup = new PopupWithForm({
   handleFormSubmit: handleProfileEditSubmit
 });
 
-const deleteConfirmationPopup = new PopupWithForm({
+const deleteConfirmationPopup = new PopupConfirmDelete ({
   popupSelector: "#delete-modal",
-  handleFormSubmit: handleDeleteConfirmation
 });
 
 
@@ -138,27 +139,21 @@ function handleProfileEditButtonClick() {
 
 // Delete Card
 
-function handleDeleteConfirmation() {
-  const cardId = deleteCardId.getAttribute('id');
-  api.deleteCard(cardId)
-   .then(() => {
-      // deleteCardId.remove();
-      deleteCardId.parentNode.removeChild(deleteCardId);
-      deleteConfirmationPopup.close();
-    })
-   .catch((error) => {
-      console.error(error);
-    });
+function handleDeleteConfirmation(card) {
+  deleteConfirmationPopup.open();
+  deleteConfirmationPopup.setSubmitAction(() =>{
+    api.deleteCard(cardId)
+    .then(() => {
+       // deleteCardId.remove();
+       deleteCardId.parentNode.removeChild(deleteCardId);
+       deleteConfirmationPopup.close();
+     })
+    .catch((error) => {
+       console.error(error);
+     });
+    
+  })
 }
-
-document.addEventListener('click', event => {
-  if (event.target.matches('.card__delete-button')) {
-    const cardElement = event.target.closest(".card");
-    // deleteCardId = cardElement;
-    // deleteConfirmationPopup.open();
-    opendeleteConfirmation(cardElement);
-  }
-});
 
 function opendeleteConfirmation(cardElement) {
   deleteCardId = cardElement;

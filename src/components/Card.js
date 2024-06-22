@@ -5,6 +5,7 @@ class Card {
     this._cardSelector = cardSelector;
     this._handleImagePreview = () =>
       handleImagePreview({ link, name});
+    
   }
 
   _handleLikeButton = () => {
