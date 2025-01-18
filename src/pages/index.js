@@ -68,11 +68,46 @@ const api = new Api({
   },
 });
 
+<<<<<<< HEAD
+let deleteCardId = '';
+let mySection;
+let theUserInfo;
+
+document.addEventListener('DOMContentLoaded', () => {
+  Promise.all([api.getInitialCards(), api.getUserInfo()])
+    .then(([cardData, userData]) => { // Corrected the order here
+      theUserInfo = new UserInfo({
+          nameSelector: "#profile-title",
+          aboutSelector: "#profile-description",
+          avatarSelector: "#profile__image"
+      });
+      theUserInfo.setUserInfo(userData);
+      theUserInfo.setUserAvatar(userData.avatar);
+      // console.log(cardData);
+      
+      mySection = new Section ({
+        items: cardData,
+        renderer: (item) => {
+          const card = getCardElement(item);
+          mySection.addItem(card.getView());
+        }
+      },
+      ".cards__list");
+      mySection.renderItems(cardData);
+
+      profileEditButton.addEventListener("click", handleProfileEditButtonClick);
+      })
+  });
+
+const thePopupWithImage = new PopupWithImage({
+  popupSelector: "#preview-image",
+=======
 api.getUserInfoAndCards()
 .then(({ userInfo, cards }) => {
   userInformation.setUserInfo({
   name: userInfo.name,
   about: userInfo.about,
+>>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
 });
 userInformation.updateAvatarImage({ avatar: userInfo.avatar });
 sectionCards.renderItems(cards);
@@ -83,6 +118,28 @@ sectionCards.renderItems(cards);
 });
 
 
+<<<<<<< HEAD
+
+const formValidators = {};
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute("name");
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(config);
+
+const card = new Card({id, name, link }, "#card-template", handlePopupImage, handleDeleteConfirmation, handleLikeButton);
+function getCardElement({id, name, link }) {
+  const cardElement = card.getView();
+  cardElement.setAttribute('id', `card-${id}`);
+  return card;
+=======
 function createCard(item) {
   const card = new Card(
     item,
@@ -96,6 +153,7 @@ function createCard(item) {
     }
   );
   return card.getView();
+>>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
 }
 
 function handleLikeCard(card) {
@@ -105,14 +163,91 @@ function handleLikeCard(card) {
       card.updateLike(true);
     })
     .catch((error) => {
+<<<<<<< HEAD
+      console.error(error);
+    });
+}
+
+function handleAddCardFormSubmit({ title, url}) {
+  api.addNewCard({ name: title, link: url })
+    .then((newCard) => {
+     
+  const card = getCardElement({name: title , link: url });
+  mySection.addItem(card.getView());
+  addCardModalPopup.close();
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+}
+
+function openAddCardModal() {
+  addCardModalPopup.open();
+}
+
+
+addNewCardButton.addEventListener("click", openAddCardModal);
+
+function handlePopupImage(imageData) {
+  thePopupWithImage.open({ name: imageData.name, link: imageData.link });
+}
+
+function handleProfileEditButtonClick() {
+  const { name, about } = theUserInfo.getUserInfo();
+  nameInput.value = name;
+  aboutInput.value = about;
+  profileEditModalPopup.open();
+}
+
+// Delete Card
+
+function handleDeleteConfirmation(card) {
+  deleteConfirmationPopup.open();
+  deleteConfirmationPopup.setSubmitAction(() =>{
+    api.deleteCard(cardId)
+    .then(() => {
+      console.log("Item deleted successfully");
+       // deleteCardId.remove();
+      //  deleteCardId.parentNode.removeChild(deleteCardId);
+       deleteConfirmationPopup.close();
+     })
+    .catch((error) => {
+       console.error(error);
+     });
+  })
+}
+
+function opendeleteConfirmation(cardElement) {
+  deleteCardId = cardElement;
+  deleteConfirmationPopup.open();
+}
+
+// Like/Dislike
+
+function handleLikeButton(likeButton, likedStatus, cardId) {
+  if (likedStatus) {
+    api.removeLike(cardId)
+    .then(() => {
+      likeButton.classList.remove('card__like-button_active');
+    })
+    .catch((error) => {
+      console.error("Error removing like", error);
+=======
       console.error("Error adding like", error);
+>>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
     });
   } else {
     api.dislikeCard(cardId)
     .then(() => {
       card.updateLike(false);
     })
+<<<<<<< HEAD
+    // .catch((error) => {
+    //   console.error('Error adding like', error);
+    // });
+=======
     .catch((error) => console.error("Error removing like from card", err));
+>>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
   }
 }
 

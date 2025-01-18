@@ -4,26 +4,69 @@ export default class Api {
     this._headers = headers;
   }
 
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
-      headers: this._headers,
-    }).then((res) => this._checkResponse(res));
+  _handleResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    console.log(`Error: ${res.status}`); // new line
+    return Promise.reject(`Error: ${res.status}`);
   }
+
+  _request(url, options) {
+    // return fetch(url, options).then(this._handleResponse);
+    return fetch(url, options) 
+        .then(this._handleResponse)
+        .catch((error) => {
+          console.error('Fetch error:', error);
+          throw error;
+        });    
+  }
+  
+  // getUserInfo() {
+  //   return this._request(`${this.baseUrl}/users/me`, {
+  //     method: "GET",
+  //     headers: this.headers
+  //   });
+  // }
+
+
+  // getInitialCards() {
+  //   return this._request(`${this.baseUrl}/cards`, {
+  //     method: "GET",
+  //     headers: this.headers
+  //   });
+  // }
 
   getUserInfo() {
-    return this._request(`${this.baseUrl}/users/me`, {
-      method: "GET",
-      headers: this._headers
-    }).then((res) => this._checkResponse(res));
+    try {
+      return this._request(`${this.baseUrl}/users/me`, {
+        method: "GET",
+        headers: this.headers,
+      });
+    } catch (error) {
+      console.error("Error getting user info:", error);
+      throw error;
+    }
   }
 
-  updateUserInfo(data) {
-    return fetch(`${this.baseUrl}/users/me`, {
+  getInitialCards() {
+    try {
+      return this._request(`${this.baseUrl}/cards`, {
+        method: "GET",
+        headers: this.headers,
+      });
+    } catch (error) {
+      console.error("Error getting initial cards:", error);
+      throw error;
+    }
+  }
+
+  updateUserInfo(name, about) {
+    return this._request(`${this.baseUrl}/users/me`, {
       method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify(data)
-  }).then((res) => this._checkResponse(res));
+      headers: this.headers,
+      body: JSON.stringify({name, about}),
+    });
   }
 
   updateAvatarUser(data) {
@@ -45,16 +88,22 @@ export default class Api {
   addNewCard({data}) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
-      headers: this._headers,
-      body: JSON.stringify(data),
-    }).then((res) => this._checkResponse(res));
-  }
+      headers: {
+        ...this.headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({name, link}),
+    })
+    .catch(err => console.log(err));
+  };
 
-  handleDeleteCard(cardId) {
-    return fetch(`${this.baseUrl}/cards/${cardId}`, {
+  deleteCard(cardId) {
+    console.log(cardId);
+    return this._request(`${this.baseUrl}/cards/${cardId}`, {
       method: "DELETE",
-      headers: this._headers,
-    }).then((res) => this._checkResponse(res));
+      headers: this.headers,
+    })
+    .catch(err => console.log(err));
   }
   likeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
