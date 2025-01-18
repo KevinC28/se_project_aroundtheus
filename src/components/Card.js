@@ -4,7 +4,7 @@ class Card {
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleImagePreview = () =>
-      handleImagePreview({ link, name});
+      handleImagePreview({link, name});
     
   }
 

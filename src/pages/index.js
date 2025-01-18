@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       theUserInfo.setUserInfo(userData);
       theUserInfo.setUserAvatar(userData.avatar);
-      console.log(cardData);
+      // console.log(cardData);
       
       mySection = new Section ({
         items: cardData,
@@ -74,6 +74,7 @@ const deleteConfirmationPopup = new PopupConfirmDelete ({
 });
 
 
+
 const formValidators = {};
 
 const enableValidation = (config) => {
@@ -88,8 +89,8 @@ const enableValidation = (config) => {
 
 enableValidation(config);
 
+const card = new Card({id, name, link }, "#card-template", handlePopupImage, handleDeleteConfirmation, handleLikeButton);
 function getCardElement({id, name, link }) {
-  const card = new Card({id, name, link }, "#card-template", handlePopupImage, handleDeleteConfirmation, handleLikeButton);
   const cardElement = card.getView();
   cardElement.setAttribute('id', `card-${id}`);
   return card;
@@ -144,14 +145,14 @@ function handleDeleteConfirmation(card) {
   deleteConfirmationPopup.setSubmitAction(() =>{
     api.deleteCard(cardId)
     .then(() => {
+      console.log("Item deleted successfully");
        // deleteCardId.remove();
-       deleteCardId.parentNode.removeChild(deleteCardId);
+      //  deleteCardId.parentNode.removeChild(deleteCardId);
        deleteConfirmationPopup.close();
      })
     .catch((error) => {
        console.error(error);
      });
-    
   })
 }
 
@@ -176,5 +177,8 @@ function handleLikeButton(likeButton, likedStatus, cardId) {
     .then(() => {
       likeButton.classList.add('card__like-button_active');
     })
+    // .catch((error) => {
+    //   console.error('Error adding like', error);
+    // });
   }
 }

@@ -11,7 +11,7 @@ export default class Popup {
     open() {
         this._popupElement.classList.add("modal_opened");
         document.addEventListener("keyup", this._handleEscUp);
-        this._closeButton.addEventListener("click", this.close);
+        // this._closeButton.addEventListener("click", this.close);
         this._popupElement.addEventListener("mousedown", this._handleOverlayClick);
     }
 
@@ -35,7 +35,7 @@ export default class Popup {
     close() {
         this._popupElement.classList.remove("modal_opened");
         document.removeEventListener("keyup", this._handleEscUp);
-        this._closeButton.removeEventListener("click", this.close);
+        // this._closeButton.removeEventListener("click", this.close);
         this._popupElement.removeEventListener("mousedown", this._handleOverlayClick);
     }
 }
