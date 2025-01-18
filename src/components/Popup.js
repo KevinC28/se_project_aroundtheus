@@ -1,41 +1,31 @@
 export default class Popup {
-    constructor({ popupSelector }) {
+    constructor({ popupSelector}) {
         this._popupElement = document.querySelector(popupSelector);
-        this._closeButton = this._popupElement.querySelector(".modal__close");
-        this.close = this.close.bind(this);
-        this._handleEscUp = this._handleEscUp.bind(this);
-        this._handleOverlayClick = this._handleOverlayClick.bind(this);
-        this._isEscEvent = this._isEscEvent.bind(this);
+        this._handleEscclose = this._handleEscape.bind(this);
     }
 
     open() {
-        this._popupElement.classList.add("modal_opened");
-        document.addEventListener("keyup", this._handleEscUp);
-        this._closeButton.addEventListener("click", this.close);
-        this._popupElement.addEventListener("mousedown", this._handleOverlayClick);
+        this._popupElement.classList.add('modal_opened');
+        document.addEventListener('keydown', this._handleEscclose);
     }
 
-    _isEscEvent = (e, action) => {
-        if (e.key === 'Escape') {
-          action();
-        }
-      }
-    
-    _handleEscUp = (e) => {
-        e.preventDefault();
-        this._isEscEvent(e, this.close);
+    close() {
+        this._popupElement.classList.remove('modal_opened');
+        document.removeEventListener('keydown', this._handleEscclose);
     }
 
-    _handleOverlayClick(e) {
-        if (e.target === this._popupElement) {
+    _handleEscape(evt) {
+        if (evt.key === 'Escape') {
             this.close();
         }
     }
-    
-    close() {
-        this._popupElement.classList.remove("modal_opened");
-        document.removeEventListener("keyup", this._handleEscUp);
-        this._closeButton.removeEventListener("click", this.close);
-        this._popupElement.removeEventListener("mousedown", this._handleOverlayClick);
+
+    setEventListeners() {
+        this._popupElement.addEventListener("mousedown", (evt) => {
+            if (evt.target.classList.contains("modal") ||
+            evt.target.classList.contains("modal__close-button")) {
+                this.close();
+                }
+            });
+        }
     }
-}

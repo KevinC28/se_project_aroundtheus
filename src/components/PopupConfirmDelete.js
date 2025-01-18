@@ -1,18 +1,21 @@
 import Popup from "./Popup";
 
-class PopupConfirmDelete extends Popup {
-
-    setSubmitAction(action) {
-        this.submitCallback = action;
+export default class PopupConfirmDelete extends Popup {
+    constructor(popupSelector) {
+        super({ popupSelector });
+        this._deleteCard = this._popupElement;
+        this._formElement = this._deleteCard.querySelector(".modal__form");
     }
-
+    setSubmitAction(submitAct) {
+        this._submitAction = submitAction;
+    }
     setEventListeners() {
-        super.setEventListeners();
-        this._popupForm.addEventListener("submit", (event) => {
-            event.preventDefault();
-            this.submitCallback();
+        this._formElement.addEventListener("submit", (evt) => {
+            evt.preventDefault();
+            if (this._submitAction) {
+                this._submitAction();
+            }
         });
+        super.setEventListeners();
     }
 }
-
-export default PopupConfirmDelete;
