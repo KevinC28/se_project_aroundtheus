@@ -4,7 +4,6 @@ export default class Api {
     this._headers = headers;
   }
 
-<<<<<<< HEAD
   _handleResponse(res) {
     if (res.ok) {
       return res.json();
@@ -68,28 +67,6 @@ export default class Api {
       headers: this.headers,
       body: JSON.stringify({name, about}),
     });
-=======
-  getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, {
-      method: "GET",
-      headers: this._headers,
-    }).then((res) => this._checkResponse(res));
-  }
-
-  getUserInfo() {
-    return this._request(`${this.baseUrl}/users/me`, {
-      method: "GET",
-      headers: this._headers
-    }).then((res) => this._checkResponse(res));
-  }
-
-  updateUserInfo(data) {
-    return fetch(`${this.baseUrl}/users/me`, {
-      method: "PATCH",
-      headers: this._headers,
-      body: JSON.stringify(data)
-  }).then((res) => this._checkResponse(res));
->>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
   }
 
   updateAvatarUser(data) {
@@ -111,7 +88,6 @@ export default class Api {
   addNewCard({data}) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
-<<<<<<< HEAD
       headers: {
         ...this.headers,
         'Content-Type': 'application/json'
@@ -128,18 +104,6 @@ export default class Api {
       headers: this.headers,
     })
     .catch(err => console.log(err));
-=======
-      headers: this._headers,
-      body: JSON.stringify(data),
-    }).then((res) => this._checkResponse(res));
-  }
-
-  handleDeleteCard(cardId) {
-    return fetch(`${this.baseUrl}/cards/${cardId}`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then((res) => this._checkResponse(res));
->>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
   }
   likeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
