@@ -25,6 +25,10 @@ const api = new Api({
   }
 });
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 952b4662c11036db35a3e26cbe234024a8d18902
 let deleteCardId = '';
 let mySection;
 let theUserInfo;
@@ -57,6 +61,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const thePopupWithImage = new PopupWithImage({
   popupSelector: "#preview-image",
+<<<<<<< HEAD
+=======
+=======
+api.getUserInfoAndCards()
+.then(({ userInfo, cards }) => {
+  userInformation.setUserInfo({
+  name: userInfo.name,
+  about: userInfo.about,
+>>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
+>>>>>>> 952b4662c11036db35a3e26cbe234024a8d18902
 });
 
 const addCardModalPopup = new PopupWithForm({ 
@@ -74,6 +88,10 @@ const deleteConfirmationPopup = new PopupConfirmDelete ({
 });
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 952b4662c11036db35a3e26cbe234024a8d18902
 
 const formValidators = {};
 
@@ -94,6 +112,24 @@ function getCardElement({id, name, link }) {
   const cardElement = card.getView();
   cardElement.setAttribute('id', `card-${id}`);
   return card;
+<<<<<<< HEAD
+=======
+=======
+function createCard(item) {
+  const card = new Card(
+    item,
+    cardSelector,
+    handlePreviewImage,
+    (cardId, card) => {
+      deleteCard(cardId, card);
+    },
+    (cardId, card) => {
+      handleLikeCard(cardId, card);
+    }
+  );
+  return card.getView();
+>>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
+>>>>>>> 952b4662c11036db35a3e26cbe234024a8d18902
 }
 
 function handleProfileEditSubmit(userData) {
@@ -103,6 +139,10 @@ function handleProfileEditSubmit(userData) {
       profileEditModalPopup.close();
     })
     .catch((error) => {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 952b4662c11036db35a3e26cbe234024a8d18902
       console.error(error);
     });
 }
@@ -171,14 +211,30 @@ function handleLikeButton(likeButton, likedStatus, cardId) {
     })
     .catch((error) => {
       console.error("Error removing like", error);
+<<<<<<< HEAD
+=======
+=======
+      console.error("Error adding like", error);
+>>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
+>>>>>>> 952b4662c11036db35a3e26cbe234024a8d18902
     });
   } else {
     api.addLike(cardId)
     .then(() => {
       likeButton.classList.add('card__like-button_active');
     })
+<<<<<<< HEAD
     // .catch((error) => {
     //   console.error('Error adding like', error);
     // });
+=======
+<<<<<<< HEAD
+    // .catch((error) => {
+    //   console.error('Error adding like', error);
+    // });
+=======
+    .catch((error) => console.error("Error removing like from card", err));
+>>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
+>>>>>>> 952b4662c11036db35a3e26cbe234024a8d18902
   }
 }
