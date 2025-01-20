@@ -42,6 +42,7 @@ export const profileImage = document.querySelector(".profile__image");
 export const profilePictureUrl = document.querySelector("#profile-input-url");
 export const nameInput = document.querySelector("#profile-name");
 export const aboutInput = document.querySelector("#profile-about");
+export const profileAvatar = document.querySelector("#profile-picture-modal");
 
 //Card
 export const cardWrap = document.querySelector(".cards__list");
@@ -65,5 +66,10 @@ export const openPreviewClose = document.querySelector("#open-preview-close");
 export const deletePictureClose = document.querySelector("#delete-picture-close");
 export const editPictureClose = document.querySelector("#picture-edit-close");
 export const deleteImage = document.querySelector("#delete-modal");
+
+//Forms
+export const editFormElement = profileEditModal.querySelector("#modal-form");
+export const addCardFormElement = addNewCardModal.querySelector("#modal-form");
+export const profileFormElement = profileAvatar.querySelector("#modal-form");
 
 export const cardSelector = "#card-template";

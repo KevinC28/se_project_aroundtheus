@@ -40,7 +40,7 @@
         <div class="modal__container">
           <button class="modal__close" id="profile-modal-close"></button>
           <h3 class="modal__heading">Edit Profile</h3>
-          <form class="modal__form" id="profile-modal-form">
+          <form class="modal__form" id="modal-form">
             <input 
             type="text" 
             name="name" 
@@ -72,7 +72,7 @@
         <div class="modal__container">
           <button class="modal__close" id="modal-card-close"></button>
           <h3 class="modal__heading">New Place</h3>
-          <form class="modal__form" id="add-card-form">
+          <form class="modal__form" id="modal-form">
             <input 
             type="text" 
             name="card__title" 
@@ -107,10 +107,12 @@
     </div>
     <!-- Delete button modal -->
     <div class="modal" id="delete-modal">
-      <div class="modal__container">
+      <form class="modal__container">
         <button class="modal__close" id="delete-picture-close"></button>
         <h3 class="modal__heading">Are you sure?</h3>
-        <button class="modal__button" id="delete-picture-submit">Yes</button>
+        <form class="modal__form" id="modal-form"></form>
+          <button class="modal__button" id="delete-picture-submit" type="submit">Yes</button>
+        </form>
       </div>
     </div>
     <!-- Update Profile Picture -->
@@ -118,7 +120,7 @@
       <div class="modal__container">
         <button class="modal__close" type="button" id="picture-edit-close"></button>
         <h2 class="modal__heading">Change Profile Picture</h2>
-        <form class="modal__form">
+        <form class="modal__form" id="modal-form">
           <input 
           type="url"
           name="profile__url"

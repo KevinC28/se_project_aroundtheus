@@ -11,15 +11,9 @@ export default class Card {
     this.id = _id;
     this.isLiked = isLiked;
     this._cardSelector = cardSelector;
-<<<<<<< HEAD
-    this._handleImagePreview = () =>
-      handleImagePreview({link, name});
-    
-=======
     this._handleImagePreview = handleImagePreview;
     this._handleCardDelete = handleCardDelete;
     this._handleLikeCard = handleLikeCard;
->>>>>>> fbd6a4dbcd572411004eaad789201922aea762d1
   }
 
   _getTemplate() {

@@ -1,26 +1,25 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import "./index.css"; 
-import * as constants from "../utils/constants";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupConfirmDelete from "../components/PopupConfirmDelete.js";
 import Api from "../components/Api.js";
+import {
+  addNewCardButton,
+  profileEditButton,
+  addCardFormElement,
+  editFormElement,
+  profileFormElement,
+  newCardTitleInput,
+  newCardUrlInput,
+  cardSelector,
+  config,
+} from "../utils/constants.js";
 
-// const profileEditModal = document.querySelector("#profile-edit-modal");
-// const profileEditButton = document.querySelector(".profile__edit-button");
-// const editFormElement = profileEditModal.querySelector(".modal__form");
-// const addNewCardButton = document.querySelector(".profile__add-button");
-// const nameInput = editFormElement.querySelector("#profile-name");
-// const aboutInput = editFormElement.querySelector("#profile-about");
-// const deleteCardButton = document.querySelector(".modal__form");
 
-const profileEditForm = document.querySelector("#profile-modal-form");
-const addCardForm = document.querySelector("#card-modal-form");
-const avatarImgUpdate = document.querySelector("#profile-picture-modal");
-const profileNameUpdate = document.querySelector("#profile-edit-modal");
 
 const sectionCards = new Section(
   {
@@ -32,33 +31,43 @@ const sectionCards = new Section(
   ".cards__list"
 );
 
-const addCardModalPopup = new PopupWithForm(
-  "#add-card-modal",
-  handleAddCardFormSubmit
-);
+document.addEventListener("DOMContentLoaded", () => {
+    const addCardModalPopup = new PopupWithForm(
+        "#add-card-modal",
+        handleAddCardFormSubmit
+    );
 
-const profilePicturePopup = new PopupWithForm (
-  "#profile-picture-modal",
-  handleProfilePicSubmit
-);
 
-const profileEditModalPopup = new PopupWithForm(
-  "#profile-edit-modal",
-  handleProfileEditFormSubmit
-);
+    const profilePicturePopup = new PopupWithForm(
+        "#profile-picture-modal",
+        handleProfilePicSubmit
+    );
+
+
+    const profileEditModalPopup = new PopupWithForm(
+        "#profile-edit-modal",
+        handleProfileEditSubmit
+    );
+
 
 addCardModalPopup.setEventListeners();
 profilePicturePopup.setEventListeners();
 profileEditModalPopup.setEventListeners();
 
-const previewImagePopup = new PopupWithImage("#preview-image");
+    const previewImagePopup = new PopupWithImage("#preview-image");
+    previewImagePopup.setEventListeners();
 
-previewImagePopup.setEventListeners();
+
 const userInformation = new UserInfo({
   nameSelector: ".profile__title",
   aboutSelector: ".profile__description",
   avatarSelector: ".profile__image",
 });
+
+    const confirmDelete = new PopupConfirmDelete("#delete-modal");
+
+
+confirmDelete.setEventListeners();
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
@@ -82,6 +91,27 @@ sectionCards.renderItems(cards);
   alert("Please try again. Unable to load user information or card.")
 });
 
+const profilePictureEditButton = document.querySelector(".profile__edit-button");
+profilePictureEditButton.addEventListener("click", () => {
+  profilePicturePopup.open();
+});
+
+function handleProfileEditSubmit(inputData) {
+  api
+    .updateUserInfo({
+      name: inputData.name,
+      about: inputData.about,
+    })
+    .then(() => {
+      userInformation.setUserInfo(inputData);
+      profileEditModalPopup.close();
+      profileEditForm.reset();
+    })
+    .catch((error) => {
+      console.error("Error updating user profile", error);
+      alert("Please try again. Unable to update user profile.");
+    });
+}
 
 function createCard(item) {
   const card = new Card(
@@ -141,33 +171,30 @@ function deleteCard(cardId, card) {
   deleteConfirmation.open();
   }
 
-function handleProfileEditSubmit(inputData) {
-  api
-    .updateUserInfo({
-      name: inputData.name,
-      about: inputData.about,
+function handleProfilePicSubmit(inputData) {
+  api.updateAvatarUser({ avatar: inputData.avatar })
+  .then(() => {
+    userInformation.updateAvatarImage({ avatar: inputData.avatar });
+    profilePicturePopup.close();
+    profile
+    profileFormElement.reset();
     })
-    .then(() => {
-      userInformation.setUserInfo(inputData);
-      profileEditModalPopup.close();
-      profileEditForm.reset();
+    .catch((err) => {
+      console.error("Error updating avatar", err);
+      alert("Error updating avatar. Please try again.");
     })
-    .catch((error) => {
-      console.error("Error updating user profile", error);
-      alert("Please try again. Unable to update user profile.");
-    });
 }
 
 function handleAddCardFormSubmit(inputValues) {
   api
     .addCard({
-      name: inputValues.card__title,
-      link: inputValues.card__url,
+      name: inputValues.title,
+      link: inputValues.url,
     })
-    .then((card) => {
+    .then((cardData) => {
       sectionCards.addItem(createCard(cardData));
       addCardModalPopup.close();
-      addCardForm.reset();
+      addCardFormElement.reset();
       addCardFormValidator.resetValidation();
     })
     .catch((error) => {
@@ -176,12 +203,14 @@ function handleAddCardFormSubmit(inputValues) {
     });
 }
 
-profileEditButton.addEventListener("click", () => {
-  const currentUserInfo = userInformation.getUserInfo();
-  nameInput.value = currentUserInfo.title;
-  aboutInput.value = currentUserInfo.description;
-  profileEditModalPopup.open();
+    profileEditButton.addEventListener("click", () => {
+        const currentUserInfo = userInformation.getUserInfo();
+        nameInput.value = currentUserInfo.title;
+        aboutInput.value = currentUserInfo.description;
+        profileEditModalPopup.open();
+    });
 });
+
 
 addNewCardButton.addEventListener("click", () => {
   addCardModalPopup.open();
