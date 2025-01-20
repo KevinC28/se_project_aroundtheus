@@ -31,32 +31,28 @@ const sectionCards = new Section(
   ".cards__list"
 );
 
-document.addEventListener("DOMContentLoaded", () => {
-    const addCardModalPopup = new PopupWithForm(
-        "#add-card-modal",
-        handleAddCardFormSubmit
-    );
+const addCardModalPopup = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
 
+const profilePicturePopup = new PopupWithForm (
+  "#profile-picture-modal",
+  handleProfilePicSubmit
+);
 
-    const profilePicturePopup = new PopupWithForm(
-        "#profile-picture-modal",
-        handleProfilePicSubmit
-    );
-
-
-    const profileEditModalPopup = new PopupWithForm(
-        "#profile-edit-modal",
-        handleProfileEditSubmit
-    );
-
+const profileEditModalPopup = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
 
 addCardModalPopup.setEventListeners();
 profilePicturePopup.setEventListeners();
 profileEditModalPopup.setEventListeners();
 
-    const previewImagePopup = new PopupWithImage("#preview-image");
-    previewImagePopup.setEventListeners();
+const previewImagePopup = new PopupWithImage("#preview-image");
 
+previewImagePopup.setEventListeners();
 
 const userInformation = new UserInfo({
   nameSelector: ".profile__title",
@@ -64,8 +60,7 @@ const userInformation = new UserInfo({
   avatarSelector: ".profile__image",
 });
 
-    const confirmDelete = new PopupConfirmDelete("#delete-modal");
-
+const confirmDelete = new PopupConfirmDelete("delete-card-modal");
 
 confirmDelete.setEventListeners();
 
@@ -203,14 +198,12 @@ function handleAddCardFormSubmit(inputValues) {
     });
 }
 
-    profileEditButton.addEventListener("click", () => {
-        const currentUserInfo = userInformation.getUserInfo();
-        nameInput.value = currentUserInfo.title;
-        aboutInput.value = currentUserInfo.description;
-        profileEditModalPopup.open();
-    });
+profileEditButton.addEventListener("click", () => {
+  const currentUserInfo = userInformation.getUserInfo();
+  nameInput.value = currentUserInfo.title;
+  aboutInput.value = currentUserInfo.description;
+  profileEditModalPopup.open();
 });
-
 
 addNewCardButton.addEventListener("click", () => {
   addCardModalPopup.open();
