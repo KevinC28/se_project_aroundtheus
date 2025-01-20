@@ -2,11 +2,11 @@ import Popup from "./Popup";
 
 export default class PopupConfirmDelete extends Popup {
     constructor(popupSelector) {
-        super({ popupSelector });
+        super( popupSelector );
         this._deleteCard = this._popupElement;
         this._formElement = this._deleteCard.querySelector(".modal__form");
     }
-    setSubmitAction(submitAct) {
+    setSubmitAction(submitAction) {
         this._submitAction = submitAction;
     }
     setEventListeners() {
