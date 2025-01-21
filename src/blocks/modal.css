@@ -65,6 +65,13 @@
     margin: 0 0 81px;
 }
 
+.modal__heading_delete-button {
+    font-family: "Inter", Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    margin: 0 0 81px;
+}
+
 .modal__form-field::placeholder {
     color: #c4c4c4;
     font-size: 14px;

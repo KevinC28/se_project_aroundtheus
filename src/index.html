@@ -8,16 +8,15 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible" />
     <title>Around the U.S</title>
     <link rel="shortcut icon" href="#" />
-    <link rel="stylesheet" href="pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header page__section">
-        <img src="../src/images/around-the-us.svg" alt="Around the U.S. Logo" class="header__logo"/>
+        <img src="<%=require('../src/images/around-the-us.svg')%>" alt="Around the U.S. Logo" class="header__logo"/>
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img src="../src/images/Avatar.jpg" alt="Avatar" class="profile__image" />
+          <img src="<%=require('../src/images/Avatar.jpg')%>" alt="Avatar" class="profile__image" />
           <div class="profile__info">
             <div class="profile__info">
             <h1 class="profile__title" id="profile-title">Jacques Cousteau</h1>
@@ -35,12 +34,12 @@
         <p class="footer__copyright">&copy; 2023 Around the U.S.</p>
       </footer>
       </div>
-          <!-- Edit modal -->
+      <!-- Edit modal -->
       <div class="modal" id="profile-edit-modal">
         <div class="modal__container">
-          <button class="modal__close" type="button"></button>
+          <button class="modal__close" id="profile-modal-close"></button>
           <h3 class="modal__heading">Edit Profile</h3>
-          <form class="modal__form">
+          <form class="modal__form" id="profile-edit-form">
             <input 
             type="text" 
             name="name" 
@@ -54,7 +53,7 @@
             <span class="modal__error" id="profile-name-error"></span>
             <input 
             type="text" 
-            name="job" 
+            name="about" 
             class="modal__input" 
             placeholder="About"
             id="profile-about"
@@ -68,17 +67,17 @@
         </div>
       </div>
       <!-- Add card modal -->
-    <div class="modal" id="add-card-modal">
+      <div class="modal" id="add-card-modal">
         <div class="modal__container">
-          <button class="modal__close" type="button"></button>
-          <h3 class="modal__heading_add-button">New Place</h3>
+          <button class="modal__close" id="modal-card-close"></button>
+          <h3 class="modal__heading">New Place</h3>
           <form class="modal__form" id="add-card-form">
             <input 
             type="text" 
-            name="title" 
+            name="card__title" 
             class="modal__input"
             placeholder="Title"
-            id="card-name"
+            id="card-input-title"
             minlength="1"
             maxlength="30"
             required
@@ -86,39 +85,63 @@
             <span class="modal__error" id="card-name-error"></span>
             <input 
             type="url" 
-            name="url" 
+            name="card__url" 
             class="modal__input" 
             placeholder="Image link"
-            id="card-about"
+            id="card-input-about"
             required
             >
             <span class="modal__error" id="card-about-error"></span>
             <button class="modal__button modal__button_disabled" type="submit" disabled>Save</button>
           </form>
         </div>
-    </div>
-    <!-- Preview image modal -->
-    <div class="modal" id="preview-image">
-      <div class="modal__preview_container">
-        <button class="modal__close"></button>
-        <img class="modal__image"/>
-        <p class="modal__image-name"></p>
       </div>
-    </div>
-    <template id="card-template">
-      <li class="card">
-        <img
-          src=""
-          class="card__image"
-          alt=""
-        />
-        <button type="button" class="card__delete-button"></button>
-        <div class="card__description">
-          <h2 class="card__title"></h2>
-          <button type="button" class="card__like-button"></button>
+      <!-- Preview image modal -->
+      <div class="modal" id="preview-image">
+        <div class="modal__container modal__preview_container">
+          <button class="modal__button" id="open-preview-close"></button>
+          <img src="" alt="" class="modal__image" id="modal-preview-image"/>
+          <h3 class="preview__description"></h3>
         </div>
-      </li>
-    </template>
-    <script defer src="./pages/index.js" type="module"></script>
-  </body>
+      </div>
+      <!-- Delete button modal -->
+      <div class="modal" id="delete-modal">
+        <div class="modal__container">
+          <button class="modal__close" id="delete-picture-close"></button>
+          <h3 class="modal__heading">Are you sure?</h3>
+          <form class="modal__form" id="modal-form"></form>
+            <button class="modal__button" id="delete-picture-submit" type="submit">Yes</button>
+          </form>
+        </div>
+      </div>
+      <!-- Update Profile Picture -->
+      <div class="modal" id="profile-picture-modal">
+        <div class="modal__container">
+          <button class="modal__close" type="button" id="picture-edit-close"></button>
+          <h2 class="modal__heading">Change Profile Picture</h2>
+          <form class="modal__form" id="avatar-form">
+            <input 
+            type="url"
+            name="profile__url"
+            class="modal__input"
+            placeholder="Image link"
+            id="profile-input-url"
+            required
+            />
+            <span class="modal__error" id="profile-input-url-error"></span>
+            <button class="modal__button" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+      <template id="card-template">
+        <li class="card">
+          <img src="" alt="" class="card__image" />
+          <button class="card__delete-button" type="button"></button>
+          <div class="card__description">
+            <h2 class="card__title"></h2>
+            <button type="button" class="card__like-button"></button>
+          </div>
+        </li>
+      </template>
+    </body>
 </html>
