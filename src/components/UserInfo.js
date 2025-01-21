@@ -12,7 +12,7 @@ export default class UserInfo {
     };
   }
 
-  setUserInfo() {
+  setUserInfo(userInfo) { // Updated to accept userInfo parameter
     this._nameSelector.textContent = userInfo.name;
     this._aboutSelector.textContent = userInfo.about;
   }

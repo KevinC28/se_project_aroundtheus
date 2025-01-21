@@ -19,13 +19,15 @@ import {
   config,
 } from "../utils/constants.js";
 
-
+const profileEditForm = document.querySelector("#profile-edit-form");
+const addCardForm = document.querySelector("#add-card-form");
+const avatarForm = document.querySelector("#avatar-form"); // Added this line
 
 const sectionCards = new Section(
   {
     renderer: (cardData) => {
       const cardElement = createCard(cardData);
-      cardSection.addItem(cardElement);
+      sectionCards.addItem(cardElement); // Corrected reference
     },
   },
   ".cards__list"
@@ -36,7 +38,7 @@ const addCardModalPopup = new PopupWithForm(
   handleAddCardFormSubmit
 );
 
-const profilePicturePopup = new PopupWithForm (
+const profilePicturePopup = new PopupWithForm(
   "#profile-picture-modal",
   handleProfilePicSubmit
 );
@@ -60,19 +62,19 @@ const userInformation = new UserInfo({
   avatarSelector: ".profile__image",
 });
 
-const confirmDelete = new PopupConfirmDelete("delete-card-modal");
+const confirmDelete = new PopupConfirmDelete("#delete-modal");
 
 confirmDelete.setEventListeners();
 
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
-    authorization: "2aa48a9b-dea9-44fc-a8a9-fa17b5150cea",
+    authorization: "c2d99179-b0a0-4e38-b544-0e62f4c09b46",
     "Content-Type": "application/json",
   },
 });
 
-api.getUserInfoAndCards()
+api.getUserInfoAndCard()
 .then(({ userInfo, cards }) => {
   userInformation.setUserInfo({
   name: userInfo.name,
@@ -143,7 +145,7 @@ function handleLikeCard(card) {
 
 const editFormValidator = new FormValidator(config, profileEditForm);
 const addCardFormValidator = new FormValidator(config, addCardForm);
-const avatarFormValidator = new FormValidator(config, avatarFormValidator);
+const avatarFormValidator = new FormValidator(config, avatarForm); // Updated this line
 
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
@@ -171,7 +173,6 @@ function handleProfilePicSubmit(inputData) {
   .then(() => {
     userInformation.updateAvatarImage({ avatar: inputData.avatar });
     profilePicturePopup.close();
-    profile
     profileFormElement.reset();
     })
     .catch((err) => {

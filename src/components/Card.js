@@ -20,14 +20,13 @@ export default class Card {
     return document.querySelector(this._cardSelector)
     .content.querySelector(".card")
     .cloneNode(true);
-
   }
 
   setEventListeners() {
     this._likeButton.addEventListener("click", this._handleLikeButton);
-    this._deleteButton.addEventListener("click", this._handleDeleteCard); // Fix: Use _handleDeleteCard instead of _handleDeleteButton
+    this._deleteButton.addEventListener("click", this._handleDeleteCard);
     this._cardImage.addEventListener("click", () => {
-      this._handleImagePreview();
+      this._handleImagePreview({ name: this._name, link: this._link }); // Pass name and link
     });
   }
 
